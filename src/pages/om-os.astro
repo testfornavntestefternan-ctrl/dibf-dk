@@ -1,12 +1,19 @@
 ---
 import Base from '../layouts/Base.astro';
+import { board, contact, founders } from '../data/site';
 ---
 
-<Base title="Hvem er vi" description="Dansk Islamisk Begravelsesfond ejer den muslimske gravplads i Brøndby — Danmarks første uden tilknytning til en kristen kirkegård." currentPath="/hvem-er-vi">
+<Base
+  title="Om os"
+  description="Dansk Islamisk Begravelsesfond ejer den muslimske gravplads i Brøndby — Danmarks første uden tilknytning til en kristen kirkegård."
+  currentPath="/om-os"
+>
   <header class="page-hero">
-    <p class="kicker">Om fonden</p>
-    <h1>Hvem er vi</h1>
-    <p class="lede">Dansk Islamisk Begravelsesfond ejer og driver gravpladsen i Brøndby. Her er historien om, hvordan den blev til.</p>
+    <p class="kicker">Fonden</p>
+    <h1>Om os</h1>
+    <p class="lede">
+      Dansk Islamisk Begravelsesfond ejer og driver gravpladsen i Brøndby. Her er historien, bestyrelsen og de stiftende foreninger.
+    </p>
   </header>
 
   <article class="split">
@@ -51,10 +58,53 @@ import Base from '../layouts/Base.astro';
       <div class="toc glass">
         <h2>På denne side</h2>
         <a href="#historie">Historie</a>
-        <a href="/bestyrelsen">Bestyrelsen</a>
+        <a href="#bestyrelsen">Bestyrelsen</a>
+        <a href="#stiftende">Stiftende foreninger</a>
         <a href="/gravspladsen">Gravpladsen i dag</a>
       </div>
       <img class="glass" src="/images/logo-full.png" alt="DIBF-logo" width="400" height="370" style="padding: 1.5rem" />
     </aside>
   </article>
+
+  <section class="stack" style="margin-block-start: 3rem" id="bestyrelsen">
+    <div class="section-head">
+      <p class="kicker">Ledelse</p>
+      <h2>Bestyrelsen</h2>
+      <p class="muted">Bestyrelsen for 2026. Forslag og klager sendes til {contact.emails.forslag}.</p>
+    </div>
+    <div class="board-grid">
+      {
+        board.map((member) => (
+          <article class="person">
+            <h3>{member.name}</h3>
+            <span>{member.role}</span>
+          </article>
+        ))
+      }
+    </div>
+    <p class="muted">
+      E-mail: <a href={`mailto:${contact.emails.bestyrelse}`}>{contact.emails.bestyrelse}</a>
+    </p>
+  </section>
+
+  <section class="stack" style="margin-block-start: 3rem" id="stiftende">
+    <div class="section-head">
+      <p class="kicker">Stiftende foreninger</p>
+      <h2>Fonden er stiftet af</h2>
+    </div>
+    <div class="org-grid">
+      {
+        founders.map((org) => (
+          <article class="org">
+            <strong>{org.name}</strong>
+            <span>
+              {org.address}
+              {org.cvr ? ` · CVR ${org.cvr}` : ''}
+              {org.note ? ` · ${org.note}` : ''}
+            </span>
+          </article>
+        ))
+      }
+    </div>
+  </section>
 </Base>

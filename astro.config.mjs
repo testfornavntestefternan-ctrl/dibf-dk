@@ -15,4 +15,13 @@ export default defineConfig({
     prefetchAll: true,
     defaultStrategy: 'hover',
   },
+  redirects: {
+    '/hvem-er-vi': '/om-os',
+    '/bestyrelsen': '/om-os',
+    '/gravsted-ejer': '/ved-dodsfald',
+    '/billeder': '/gravspladsen',
+    '/grav/voksne': '/ved-dodsfald',
+    '/grav/fostre': '/ved-dodsfald',
+    '/grav/born': '/ved-dodsfald',
+  },
 });

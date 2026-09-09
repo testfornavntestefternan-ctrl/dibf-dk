@@ -26,15 +26,36 @@ export const contact = {
 };
 
 export const nav = [
-  { href: '/', label: 'Forside' },
-  { href: '/hvem-er-vi', label: 'Hvem er vi' },
-  { href: '/bestyrelsen', label: 'Bestyrelsen' },
-  { href: '/for-bedemaend', label: 'For bedemænd' },
-  { href: '/gravsted-ejer', label: 'Gravstedsejer' },
+  { href: '/om-os', label: 'Om os' },
   { href: '/gravspladsen', label: 'Gravpladsen' },
-  { href: '/billeder', label: 'Billeder' },
-  { href: '/kontakt', label: 'Kontakt os' },
+  { href: '/ved-dodsfald', label: 'Ved dødsfald' },
+  { href: '/for-bedemaend', label: 'For bedemænd' },
+  { href: '/kontakt', label: 'Kontakt' },
 ];
+
+export const paths = [
+  {
+    href: '/ved-dodsfald',
+    kicker: 'Pårørende',
+    title: 'Ved dødsfald',
+    text: 'Hvad I skal gøre, gravtyper, priser og DIBS-medlemskab.',
+    accent: 'amber',
+  },
+  {
+    href: '/gravspladsen',
+    kicker: 'Besøg',
+    title: 'Gravpladsen',
+    text: 'Ordensregler, dua, kort og billeder fra Brøndby.',
+    accent: 'teal',
+  },
+  {
+    href: '/for-bedemaend',
+    kicker: 'Professionelle',
+    title: 'For bedemænd',
+    text: 'Bestilling, prisliste og ansvarsfordeling.',
+    accent: 'aurora',
+  },
+] as const;
 
 export const graves = [
   {
@@ -44,7 +65,7 @@ export const graves = [
     excerpt:
       'Voksengrav med 30 års fredning. Gravsten, kantsten og vedligeholdelse følger gravpladsens regler.',
     image: '/images/voksne.jpg',
-    href: '/grav/voksne',
+    href: '/ved-dodsfald#voksne',
     accent: 'amber',
   },
   {
@@ -54,7 +75,7 @@ export const graves = [
     excerpt:
       'Et stille sted for de mindste. Fostergrave har 5 års fredning og egne rammer for sten og kant.',
     image: '/images/fostre.jpg',
-    href: '/grav/fostre',
+    href: '/ved-dodsfald#fostre',
     accent: 'teal',
   },
   {
@@ -64,7 +85,7 @@ export const graves = [
     excerpt:
       'Børnegrave (max. 1 m) med 30 års fredning og tilpassede mål for gravsten og kantsten.',
     image: '/images/born.jpg',
-    href: '/grav/born',
+    href: '/ved-dodsfald#born',
     accent: 'aurora',
   },
 ] as const;

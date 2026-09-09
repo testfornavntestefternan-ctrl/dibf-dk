@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { contact, graves, site } from '../data/site';
+import { contact, paths, site } from '../data/site';
 ---
 
 <Base title={site.name} currentPath="/">
@@ -10,7 +10,7 @@ import { contact, graves, site } from '../data/site';
       <h1>Et sted for værdighed, ro og fællesskab.</h1>
       <p class="lede">{site.tagline}</p>
       <div class="cta-row">
-        <a class="btn btn--primary" href="/gravspladsen">Om gravpladsen</a>
+        <a class="btn btn--primary" href="/ved-dodsfald">Ved dødsfald</a>
         <a class="btn btn--ghost" href="/kontakt">Kontakt os</a>
       </div>
     </div>
@@ -40,22 +40,16 @@ import { contact, graves, site } from '../data/site';
 
   <section class="stack-lg" style="margin-block-start: 3.5rem">
     <div class="section-head">
-      <p class="kicker">Grave</p>
-      <h2>Tre gravtyper. Én gravplads.</h2>
-      <p class="muted prose">Vælg gravtypen for priser, fredning og regler. Indholdet er det samme som på den gamle side — nu i et layout, vi kan bygge videre på.</p>
+      <p class="kicker">Find videre</p>
+      <h2>Hvad skal du?</h2>
     </div>
-    <div class="grave-grid">
+    <div class="path-grid">
       {
-        graves.map((grave) => (
-          <a class="grave-card" href={grave.href} data-accent={grave.accent} data-tilt>
-            <div class="grave-card__media">
-              <img src={grave.image} alt="" width="800" height="600" />
-            </div>
-            <div class="grave-card__body">
-              <p class="grave-card__kicker">{grave.kicker}</p>
-              <h3>{grave.title}</h3>
-              <p>{grave.excerpt}</p>
-            </div>
+        paths.map((item) => (
+          <a class="path-card" href={item.href} data-accent={item.accent} data-tilt>
+            <p class="grave-card__kicker">{item.kicker}</p>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
           </a>
         ))
       }

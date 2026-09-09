@@ -12,44 +12,75 @@ const mailto = `mailto:${contact.emails.bestyrelse}`;
     <p class="lede">Kontoret træffes {contact.hours}. Bestilling af gravplads sker via bedemand eller direkte til os.</p>
   </header>
 
-  <div class="contact-grid">
-    <div class="contact-card">
-      <h2>Adresse og telefon</h2>
-      <p>
-        DIBF<br />
-        {contact.address[0]}<br />
-        {contact.address[1]}
-      </p>
-      <p>
-        Tlf. <a href={contact.phoneHref}>{contact.phone}</a><br />
-        {contact.hours}
-      </p>
-      <p>CVR {contact.cvr}</p>
-    </div>
-    <div class="contact-card">
-      <h2>E-mail</h2>
-      <p>Driftsleder: <a href={`mailto:${contact.emails.drift}`}>{contact.emails.drift}</a></p>
-      <p>Bestyrelse: <a href={`mailto:${contact.emails.bestyrelse}`}>{contact.emails.bestyrelse}</a></p>
-      <p>Forslag og klager: <a href={`mailto:${contact.emails.forslag}`}>{contact.emails.forslag}</a></p>
-      <p>Bestilling: <a href={`mailto:${contact.emails.bestilling}`}>{contact.emails.bestilling}</a></p>
-    </div>
-  </div>
+  <div class="contact-layout">
+    <div class="contact-grid">
+      <section class="contact-card">
+        <h2>Adresse og telefon</h2>
+        <dl class="contact-meta">
+          <div>
+            <dt>Adresse</dt>
+            <dd>
+              DIBF<br />
+              {contact.address[0]}<br />
+              {contact.address[1]}
+            </dd>
+          </div>
+          <div>
+            <dt>Telefon</dt>
+            <dd><a href={contact.phoneHref}>{contact.phone}</a></dd>
+          </div>
+          <div>
+            <dt>Kontor</dt>
+            <dd>{contact.hours}</dd>
+          </div>
+          <div>
+            <dt>CVR</dt>
+            <dd>{contact.cvr}</dd>
+          </div>
+        </dl>
+      </section>
 
-  <form class="stack glass" style="padding: 1.5rem; margin-block-start: 1.5rem; max-inline-size: 42rem" action={mailto} method="get">
-    <h2>Skriv til os</h2>
-    <p class="muted">Formularen åbner din e-mail med beskeden. Intet sendes til en server.</p>
-    <label>
-      Navn
-      <input type="text" name="name" autocomplete="name" required />
-    </label>
-    <label>
-      Emne
-      <input type="text" name="subject" required />
-    </label>
-    <label>
-      Besked
-      <textarea name="body" required></textarea>
-    </label>
-    <button class="btn btn--primary" type="submit">Åbn e-mail</button>
-  </form>
+      <section class="contact-card">
+        <h2>E-mail</h2>
+        <dl class="contact-meta">
+          <div>
+            <dt>Driftsleder</dt>
+            <dd><a href={`mailto:${contact.emails.drift}`}>{contact.emails.drift}</a></dd>
+          </div>
+          <div>
+            <dt>Bestyrelse</dt>
+            <dd><a href={`mailto:${contact.emails.bestyrelse}`}>{contact.emails.bestyrelse}</a></dd>
+          </div>
+          <div>
+            <dt>Forslag og klager</dt>
+            <dd><a href={`mailto:${contact.emails.forslag}`}>{contact.emails.forslag}</a></dd>
+          </div>
+          <div>
+            <dt>Bestilling</dt>
+            <dd><a href={`mailto:${contact.emails.bestilling}`}>{contact.emails.bestilling}</a></dd>
+          </div>
+        </dl>
+      </section>
+    </div>
+
+    <form class="contact-form glass" action={mailto} method="get">
+      <h2>Skriv til os</h2>
+      <p class="muted">Formularen åbner din e-mail med beskeden. Intet sendes til en server.</p>
+      <div class="contact-form__row">
+        <label>
+          Navn
+          <input type="text" name="name" autocomplete="name" required />
+        </label>
+        <label>
+          Emne
+          <input type="text" name="subject" required />
+        </label>
+      </div>
+      <label>
+        Besked
+        <textarea name="body" required></textarea>
+      </label>
+      <button class="btn btn--primary" type="submit">Åbn e-mail</button>
+    </form>
+  </div>
 </Base>

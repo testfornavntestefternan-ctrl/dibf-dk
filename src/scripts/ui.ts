@@ -25,6 +25,8 @@ export function initNav() {
   const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
   const drawer = document.querySelector<HTMLElement>('[data-drawer]');
   if (!toggle || !drawer) return;
+  if (toggle.dataset.ready === '1') return;
+  toggle.dataset.ready = '1';
 
   const setOpen = (open: boolean) => {
     drawer.dataset.open = String(open);
@@ -123,6 +125,13 @@ export function initLightbox() {
   });
 }
 
+export function initHashScroll() {
+  const hash = window.location.hash;
+  if (!hash) return;
+  const target = document.querySelector(hash);
+  if (target) target.scrollIntoView({ block: 'start' });
+}
+
 export function boot() {
   initTheme();
   initNav();
@@ -130,6 +139,7 @@ export function boot() {
   initToTop();
   initStars();
   initLightbox();
+  initHashScroll();
   document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
     btn.removeEventListener('click', toggleTheme);
     btn.addEventListener('click', toggleTheme);
