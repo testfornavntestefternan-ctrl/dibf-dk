@@ -9,58 +9,58 @@ import { board, contact, founders, withBase } from '../data/site';
   currentPath="/om-os"
 >
   <header class="page-hero">
-    <p class="kicker">Fonden</p>
-    <h1>Om os</h1>
-    <p class="lede">
+    <p class="kicker" data-i18n="about.kicker">Fonden</p>
+    <h1 data-i18n="about.title">Om os</h1>
+    <p class="lede" data-i18n="about.lede">
       Dansk Islamisk Begravelsesfond ejer og driver gravpladsen i Brøndby. Her er historien, bestyrelsen og de stiftende foreninger.
     </p>
   </header>
 
   <article class="split">
     <div class="prose glass" style="padding: 1.6rem">
-      <p>
+      <p data-i18n="about.p1">
         Dansk Islamiske Begravelsesfond ejer den muslimske gravplads i Brøndby. Det er det første muslimske begravelsessted i Danmark, der ikke ligger i tilknytning til en kristen kirkegård.
       </p>
-      <p>
+      <p data-i18n="about.p2">
         Pladsen blev muliggjort af en lokalplan vedtaget af Brøndby Kommune i 2001. Den ligger i den grønne kile mellem Brøndbyøster og Avedøre, ved siden af Hvidovre Hospitals psykiatriske afdeling syd for Brøndbyskoven.
       </p>
-      <p>
+      <p data-i18n="about.p3">
         Området dækker 50.000 m², hvoraf 32.000 m² må anvendes til gravpladser. Kapaciteten vurderes til mellem 6.000 og 8.000 muslimske grave — nok til at dække behovet årtier frem.
       </p>
-      <p>
+      <p data-i18n="about.p4">
         Gravpladsen blev indviet den 22. september 2006 med deltagelse af blandt andre kirkeminister Bertel Haarder og integrationsminister Rikke Hvilshøj. Indvielsen blev af fondens formand kaldt den vigtigste historiske begivenhed for muslimer i Danmark.
       </p>
 
-      <h2 id="historie">Historie</h2>
-      <p>
+      <h2 id="historie" data-i18n="about.history">Historie</h2>
+      <p data-i18n="about.h1">
         Planerne går tilbage til begyndelsen af 1990’erne, hvor muslimske organisationer og trossamfund arbejdede for en egnet gravplads. Kommunernes lokalplaner tillod dengang ikke opførelse af gravpladser, og sagsbehandlingen blev oplevet som langsom.
       </p>
-      <p>
+      <p data-i18n="about.h2">
         I 2001 lovede kirkeminister Johannes Lebech, at der ville være fundet en grund inden årets udgang. Miljøminister Svend Auken pegede herefter på et areal i Brøndby. Borgmester Kjeld Rasmussen tilbød omkring 4,5 hektar til ca. 700.000 kr. — men grunden havde siden 1930 tilhørt Københavns Kommune, som vurderede den til 21,5 millioner kr.
       </p>
-      <p>
+      <p data-i18n="about.h3">
         Forskellen skyldtes uenighed om, hvorvidt grunden lå i landzone eller byzone. Brøndby Kommune ændrede lokalplanen, så området blev landzone og kun måtte bebygges med 1 % — nok til et mindre bedehus. Herefter var kommunen juridisk forpligtet til at købe, og prisen skulle ligge nærmere 700.000 kr. end 21,5 millioner.
       </p>
-      <p>
+      <p data-i18n="about.h4">
         Forhandlingerne trak ud. Indsam kunne højst betale 3 millioner kr. I august 2001 blev det vedtaget, at en uvildig taksationskommission skulle vurdere grunden. Staten skulle kompensere Brøndby Kommune for forskellen.
       </p>
-      <p>
+      <p data-i18n="about.h5">
         Folketingsvalget og den nye kirkeminister Tove Fergo ændrede forudsætningen: staten ville ikke betale kompensation. Under vurderingen gik Indsam konkurs. I januar 2003 gik 27 muslimske organisationer sammen og dannede Dansk Islamisk Begravelsesfond for at rejse ny kapital.
       </p>
-      <p>
+      <p data-i18n="about.h6">
         Taksationskommissionen fastslog senere, at prisen højst måtte være 2 millioner kr. Brøndby Kommune overtog grunden, og efter licitation købte fonden den for 3,2 millioner kr. i januar 2005.
       </p>
-      <p>
+      <p data-i18n="about.h7">
         Under anlægsarbejdet blev pladsen udsat for hærværk — hjulspor og hagekors i græsset — som rejste tvivl om, hvorvidt projektet kunne gennemføres. Det kunne det. Gravpladsen står der i dag.
       </p>
     </div>
     <aside class="stack">
       <div class="toc glass">
-        <h2>På denne side</h2>
-        <a href="#historie">Historie</a>
-        <a href="#bestyrelsen">Bestyrelsen</a>
-        <a href="#stiftende">Stiftende foreninger</a>
-        <a href={withBase('/gravspladsen')}>Gravpladsen i dag</a>
+        <h2 data-i18n="about.onPage">På denne side</h2>
+        <a href="#historie" data-i18n="about.history">Historie</a>
+        <a href="#bestyrelsen" data-i18n="about.boardTitle">Bestyrelsen</a>
+        <a href="#stiftende" data-i18n="about.foundersTitle">Stiftende foreninger</a>
+        <a href={withBase('/gravspladsen')} data-i18n="about.today">Gravpladsen i dag</a>
       </div>
       <img class="glass" src={withBase('/images/logo-full.png')} alt="DIBF-logo" width="400" height="370" style="padding: 1.5rem" />
     </aside>
@@ -68,29 +68,46 @@ import { board, contact, founders, withBase } from '../data/site';
 
   <section class="stack" style="margin-block-start: 3rem" id="bestyrelsen">
     <div class="section-head">
-      <p class="kicker">Ledelse</p>
-      <h2>Bestyrelsen</h2>
-      <p class="muted">Bestyrelsen for 2026. Forslag og klager sendes til {contact.emails.forslag}.</p>
+      <p class="kicker" data-i18n="about.boardKicker">Ledelse</p>
+      <h2 class="board-heading">
+        <span data-i18n="about.boardTitle">Bestyrelsen</span>
+        <a
+          class="board-login"
+          href={withBase('/bestyrelse/login/')}
+          data-i18n-aria="about.login"
+          aria-label="Log ind som bestyrelse"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.7" />
+            <path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+          </svg>
+        </a>
+      </h2>
+      <p class="muted">
+        <span data-i18n="about.boardLede">Bestyrelsen for 2026. Forslag og klager sendes til</span>
+        {' '}
+        {contact.emails.forslag}.
+      </p>
     </div>
     <div class="board-grid">
       {
         board.map((member) => (
           <article class="person">
             <h3>{member.name}</h3>
-            <span>{member.role}</span>
+            <span data-i18n={member.roleKey}>{member.role}</span>
           </article>
         ))
       }
     </div>
     <p class="muted">
-      E-mail: <a href={`mailto:${contact.emails.bestyrelse}`}>{contact.emails.bestyrelse}</a>
+      <span data-i18n="contact.email">E-mail</span>: <a href={`mailto:${contact.emails.bestyrelse}`}>{contact.emails.bestyrelse}</a>
     </p>
   </section>
 
   <section class="stack" style="margin-block-start: 3rem" id="stiftende">
     <div class="section-head">
-      <p class="kicker">Stiftende foreninger</p>
-      <h2>Fonden er stiftet af</h2>
+      <p class="kicker" data-i18n="about.foundersKicker">Stiftende foreninger</p>
+      <h2 data-i18n="about.foundersTitle">Fonden er stiftet af</h2>
     </div>
     <div class="org-grid">
       {
@@ -100,7 +117,14 @@ import { board, contact, founders, withBase } from '../data/site';
             <span>
               {org.address}
               {org.cvr ? ` · CVR ${org.cvr}` : ''}
-              {org.note ? ` · ${org.note}` : ''}
+              {org.note ? (
+                <>
+                  {' · '}
+                  <span data-i18n="about.dissolved">{org.note}</span>
+                </>
+              ) : (
+                ''
+              )}
             </span>
           </article>
         ))

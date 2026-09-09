@@ -30,11 +30,11 @@ export const contact = {
 };
 
 export const nav = [
-  { href: '/om-os', label: 'Om os' },
-  { href: '/gravspladsen', label: 'Gravpladsen' },
-  { href: '/ved-dodsfald', label: 'Ved dødsfald' },
-  { href: '/for-bedemaend', label: 'For bedemænd' },
-  { href: '/kontakt', label: 'Kontakt' },
+  { href: '/om-os', label: 'Om os', i18n: 'nav.about' },
+  { href: '/gravspladsen', label: 'Gravpladsen', i18n: 'nav.cemetery' },
+  { href: '/ved-dodsfald', label: 'Ved dødsfald', i18n: 'nav.death' },
+  { href: '/for-bedemaend', label: 'For bedemænd', i18n: 'nav.undertaker' },
+  { href: '/kontakt', label: 'Kontakt', i18n: 'nav.contact' },
 ];
 
 export const paths = [
@@ -44,6 +44,7 @@ export const paths = [
     title: 'Ved dødsfald',
     text: 'Hvad I skal gøre, gravtyper, priser og DIBS-medlemskab.',
     accent: 'amber',
+    i18n: 'path.family',
   },
   {
     href: withBase('/gravspladsen'),
@@ -51,6 +52,7 @@ export const paths = [
     title: 'Gravpladsen',
     text: 'Ordensregler, dua, kort og billeder fra Brøndby.',
     accent: 'teal',
+    i18n: 'path.visit',
   },
   {
     href: withBase('/for-bedemaend'),
@@ -58,51 +60,55 @@ export const paths = [
     title: 'For bedemænd',
     text: 'Bestilling, prisliste og ansvarsfordeling.',
     accent: 'aurora',
+    i18n: 'path.pro',
   },
 ] as const;
 
 export const graves = [
   {
     slug: 'voksne',
-    title: 'Voksne grav',
+    title: 'Voksengrav',
     kicker: 'Fredning 30 år',
     excerpt:
       'Voksengrav med 30 års fredning. Gravsten, kantsten og vedligeholdelse følger gravpladsens regler.',
     image: withBase('/images/voksne.jpg'),
     href: withBase('/ved-dodsfald#voksne'),
     accent: 'amber',
+    i18n: 'grave.adult',
   },
   {
     slug: 'fostre',
-    title: 'Fostre grav',
+    title: 'Fostergrav',
     kicker: 'Fredning 5 år',
     excerpt:
       'Et stille sted for de mindste. Fostergrave har 5 års fredning og egne rammer for sten og kant.',
     image: withBase('/images/fostre.jpg'),
     href: withBase('/ved-dodsfald#fostre'),
     accent: 'teal',
+    i18n: 'grave.fetus',
   },
   {
     slug: 'born',
-    title: 'Børn grav',
+    title: 'Børnegrav',
     kicker: 'Fredning 30 år',
     excerpt:
       'Børnegrave (max. 1 m) med 30 års fredning og tilpassede mål for gravsten og kantsten.',
     image: withBase('/images/born.jpg'),
     href: withBase('/ved-dodsfald#born'),
     accent: 'aurora',
+    i18n: 'grave.child',
   },
 ] as const;
 
 export const board = [
-  { name: 'Vedat Aslan', role: 'Formand' },
-  { name: 'Ghulam Mohiuddin', role: 'Næstformand' },
-  { name: 'Hamza Moustafa', role: 'Bestyrelsesmedlem' },
-  { name: 'Ateeque Durani', role: 'Bestyrelsesmedlem' },
-  { name: 'Muhammad Akhtar', role: 'Bestyrelsesmedlem (sekretær)' },
-  { name: 'Said Mohamed Said', role: 'Suppleant' },
-  { name: 'Rafed Naimi', role: 'Suppleant' },
-  { name: 'Baha El Said', role: 'Suppleant' },
+  { name: 'Vedat Aslan', role: 'Formand', roleKey: 'role.formand' },
+  { name: 'Ghulam Mohiuddin', role: 'Næstformand', roleKey: 'role.naestformand' },
+  { name: 'Hamza Moustafa', role: 'Bestyrelsesmedlem', roleKey: 'role.medlem' },
+  { name: 'Ateeque Durani', role: 'Bestyrelsesmedlem', roleKey: 'role.medlem' },
+  { name: 'Muhammad Akhtar', role: 'Bestyrelsesmedlem (sekretær)', roleKey: 'role.sekretaer' },
+  { name: 'Said Mohamed Said', role: 'Suppleant', roleKey: 'role.suppleant' },
+  { name: 'Rafed Naimi', role: 'Suppleant', roleKey: 'role.suppleant' },
+  { name: 'Baha El Said', role: 'Suppleant', roleKey: 'role.suppleant' },
 ];
 
 export const founders: { name: string; address: string; cvr?: string; note?: string }[] = [
@@ -135,13 +141,13 @@ export const founders: { name: string; address: string; cvr?: string; note?: str
 export const prices = {
   year: 2024,
   rows: [
-    { label: 'Gravsted (fredning: voksen/børn 30 år, foster 5 år)', adult: '9.500 kr.', child: '5.500 kr.', fetus: '3.250 kr.' },
-    { label: 'Gravning og dækning', adult: '6.800 kr.', child: '2.000 kr.', fetus: '1.500 kr.' },
-    { label: 'Administration, information og vejledning', adult: '2.200 kr.', child: '2.000 kr.', fetus: '1.000 kr.' },
-    { label: 'Weekend- og helligdagstillæg', adult: '4.000 kr.', child: '2.000 kr.', fetus: '1.000 kr.' },
-    { label: 'Kantsten (sættes efter mindst 2 år, inkl. moms)', adult: '5.750 kr.', child: '2.750 kr.', fetus: '0 kr.' },
-    { label: 'Trækantsten (foreløbig, inkl. moms)', adult: '750 kr.', child: '500 kr.', fetus: '0 kr.' },
-    { label: 'I alt at betale (inkl. moms)', adult: '25.000 kr.', child: '12.750 kr.', fetus: '5.750 kr.' },
+    { label: 'Gravsted (fredning: voksen/børn 30 år, foster 5 år)', i18n: 'price.plot', adult: '9.500 kr.', child: '5.500 kr.', fetus: '3.250 kr.' },
+    { label: 'Gravning og dækning', i18n: 'price.digging', adult: '6.800 kr.', child: '2.000 kr.', fetus: '1.500 kr.' },
+    { label: 'Administration, information og vejledning', i18n: 'price.admin', adult: '2.200 kr.', child: '2.000 kr.', fetus: '1.000 kr.' },
+    { label: 'Weekend- og helligdagstillæg', i18n: 'price.weekend', adult: '4.000 kr.', child: '2.000 kr.', fetus: '1.000 kr.' },
+    { label: 'Kantsten (sættes efter mindst 2 år, inkl. moms)', i18n: 'price.curb', adult: '5.750 kr.', child: '2.750 kr.', fetus: '0 kr.' },
+    { label: 'Trækantsten (foreløbig, inkl. moms)', i18n: 'price.wood', adult: '750 kr.', child: '500 kr.', fetus: '0 kr.' },
+    { label: 'I alt at betale (inkl. moms)', i18n: 'price.total', adult: '25.000 kr.', child: '12.750 kr.', fetus: '5.750 kr.' },
   ],
   extra: 'Træindramning i graven: 1.000 kr. (inkl. moms).',
 };

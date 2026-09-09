@@ -1,3 +1,5 @@
+import { applyI18n } from './i18n';
+
 export function initTheme() {
   const root = document.documentElement;
   const stored = localStorage.getItem('dibf-theme');
@@ -19,6 +21,8 @@ export function toggleTheme() {
   document.documentElement.dataset.theme = next;
   localStorage.setItem('dibf-theme', next);
   syncToggle(next);
+  applyI18n();
+  window.dispatchEvent(new CustomEvent('dibf:locale'));
 }
 
 export function initNav() {
@@ -108,20 +112,22 @@ export function initStars() {
 }
 
 export function initLightbox() {
-  const dialog = document.querySelector<HTMLDialogElement>('[data-lightbox]');
-  if (!dialog) return;
-  const img = dialog.querySelector('img');
-  document.querySelectorAll<HTMLAnchorElement>('[data-gallery] a').forEach((link) => {
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-      if (!img) return;
-      img.src = link.href;
-      img.alt = link.querySelector('img')?.alt ?? '';
-      dialog.showModal();
-    });
+  if (document.documentElement.dataset.lightbox === '1') return;
+  document.documentElement.dataset.lightbox = '1';
+  document.addEventListener('click', (event) => {
+    const link = (event.target as HTMLElement | null)?.closest?.('[data-gallery] a');
+    if (!link) return;
+    const dialog = document.querySelector<HTMLDialogElement>('[data-lightbox]');
+    const img = dialog?.querySelector('img');
+    if (!dialog || !img) return;
+    event.preventDefault();
+    img.src = (link as HTMLAnchorElement).href;
+    img.alt = link.querySelector('img')?.alt ?? '';
+    dialog.showModal();
   });
-  dialog.addEventListener('click', (event) => {
-    if (event.target === dialog) dialog.close();
+  document.addEventListener('click', (event) => {
+    const dialog = document.querySelector<HTMLDialogElement>('[data-lightbox]');
+    if (dialog && event.target === dialog) dialog.close();
   });
 }
 
@@ -138,7 +144,6 @@ export function boot() {
   initTilt();
   initToTop();
   initStars();
-  initLightbox();
   initHashScroll();
   document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
     btn.removeEventListener('click', toggleTheme);

@@ -7,18 +7,18 @@ const mailto = `mailto:${contact.emails.bestyrelse}`;
 
 <Base title="Kontakt os" description="Adresse, telefon, e-mail og åbningstider for Dansk Islamisk Begravelsesfond." currentPath="/kontakt">
   <header class="page-hero">
-    <p class="kicker">Vi er her</p>
-    <h1>Kontakt os</h1>
-    <p class="lede">Kontoret træffes {contact.hours}. Bestilling af gravplads sker via bedemand eller direkte til os.</p>
+    <p class="kicker" data-i18n="contact.kicker">Vi er her</p>
+    <h1 data-i18n="contact.title">Kontakt os</h1>
+    <p class="lede" data-i18n="contact.lede">Kontoret træffes {contact.hours}. Bestilling af gravplads sker via bedemand eller direkte til os.</p>
   </header>
 
   <div class="contact-layout">
     <div class="contact-grid">
       <section class="contact-card">
-        <h2>Adresse og telefon</h2>
+        <h2 data-i18n="contact.addrPhone">Adresse og telefon</h2>
         <dl class="contact-meta">
           <div>
-            <dt>Adresse</dt>
+            <dt data-i18n="contact.address">Adresse</dt>
             <dd>
               DIBF<br />
               {contact.address[0]}<br />
@@ -26,11 +26,11 @@ const mailto = `mailto:${contact.emails.bestyrelse}`;
             </dd>
           </div>
           <div>
-            <dt>Telefon</dt>
+            <dt data-i18n="contact.phone">Telefon</dt>
             <dd><a href={contact.phoneHref}>{contact.phone}</a></dd>
           </div>
           <div>
-            <dt>Kontor</dt>
+            <dt data-i18n="contact.office">Kontor</dt>
             <dd>{contact.hours}</dd>
           </div>
           <div>
@@ -41,22 +41,22 @@ const mailto = `mailto:${contact.emails.bestyrelse}`;
       </section>
 
       <section class="contact-card">
-        <h2>E-mail</h2>
+        <h2 data-i18n="contact.email">E-mail</h2>
         <dl class="contact-meta">
           <div>
-            <dt>Driftsleder</dt>
+            <dt data-i18n="contact.ops">Driftsleder</dt>
             <dd><a href={`mailto:${contact.emails.drift}`}>{contact.emails.drift}</a></dd>
           </div>
           <div>
-            <dt>Bestyrelse</dt>
+            <dt data-i18n="contact.board">Bestyrelse</dt>
             <dd><a href={`mailto:${contact.emails.bestyrelse}`}>{contact.emails.bestyrelse}</a></dd>
           </div>
           <div>
-            <dt>Forslag og klager</dt>
+            <dt data-i18n="contact.complaints">Forslag og klager</dt>
             <dd><a href={`mailto:${contact.emails.forslag}`}>{contact.emails.forslag}</a></dd>
           </div>
           <div>
-            <dt>Bestilling</dt>
+            <dt data-i18n="contact.booking">Bestilling</dt>
             <dd><a href={`mailto:${contact.emails.bestilling}`}>{contact.emails.bestilling}</a></dd>
           </div>
         </dl>
@@ -64,23 +64,23 @@ const mailto = `mailto:${contact.emails.bestyrelse}`;
     </div>
 
     <form class="contact-form glass" action={mailto} method="get">
-      <h2>Skriv til os</h2>
-      <p class="muted">Formularen åbner din e-mail med beskeden. Intet sendes til en server.</p>
+      <h2 data-i18n="contact.write">Skriv til os</h2>
+      <p class="muted" data-i18n="contact.writeLede">Formularen åbner din e-mail med beskeden. Intet sendes til en server.</p>
       <div class="contact-form__row">
         <label>
-          Navn
+          <span data-i18n="contact.name">Navn</span>
           <input type="text" name="name" autocomplete="name" required />
         </label>
         <label>
-          Emne
+          <span data-i18n="contact.subject">Emne</span>
           <input type="text" name="subject" required />
         </label>
       </div>
       <label>
-        Besked
+        <span data-i18n="contact.message">Besked</span>
         <textarea name="body" required></textarea>
       </label>
-      <button class="btn btn--primary" type="submit">Åbn e-mail</button>
+      <button class="btn btn--primary" type="submit" data-i18n="contact.submit">Åbn e-mail</button>
     </form>
   </div>
 </Base>

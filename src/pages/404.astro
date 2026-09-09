@@ -6,11 +6,11 @@ import { withBase } from '../data/site';
 <Base title="Siden findes ikke" currentPath="">
   <header class="page-hero">
     <p class="kicker">404</p>
-    <h1>Vi fandt ikke siden.</h1>
-    <p class="lede">Gå tilbage til forsiden, eller brug menuen til at finde gravpladsen, vejledning og kontakt.</p>
+    <h1 data-i18n="notfound.h1">Vi fandt ikke siden.</h1>
+    <p class="lede" data-i18n="notfound.lede">Gå tilbage til forsiden, eller brug menuen til at finde gravpladsen, vejledning og kontakt.</p>
     <div class="cta-row">
-      <a class="btn btn--primary" href={withBase('/')}>Til forsiden</a>
-      <a class="btn btn--ghost" href={withBase('/kontakt')}>Kontakt os</a>
+      <a class="btn btn--primary" href={withBase('/')} data-i18n="notfound.home">Til forsiden</a>
+      <a class="btn btn--ghost" href={withBase('/kontakt')} data-i18n="home.ctaContact">Kontakt os</a>
     </div>
   </header>
 </Base>

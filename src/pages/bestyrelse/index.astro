@@ -1,0 +1,82 @@
+---
+import Base from '../../layouts/Base.astro';
+import { messages } from '../../i18n/messages';
+import { withBase } from '../../data/site';
+
+const textKeys = Object.keys(messages.da).filter(
+  (key) => !key.startsWith('cms.') && !key.startsWith('nav.') && !key.startsWith('theme.') && !key.startsWith('footer.'),
+);
+---
+
+<Base title="Bestyrelsen" description="Bestyrelsens side til nyheder, billeder og tekster." currentPath="/bestyrelse">
+  <div class="cms-gate glass" data-cms-gate>
+    <p data-i18n="cms.needLogin">Log ind for at fortsætte.</p>
+    <a class="btn btn--primary" href={withBase('/bestyrelse/login/')} data-i18n="cms.login">Log ind</a>
+  </div>
+
+  <div data-cms-dash hidden>
+    <header class="page-hero">
+      <p class="kicker" data-i18n="about.boardKicker">Ledelse</p>
+      <h1 data-i18n="cms.dash">Bestyrelsens side</h1>
+      <p class="lede" data-i18n="cms.roleEditor">Redaktør — nyheder, billeder og tekster</p>
+      <div class="cta-row">
+        <button class="btn btn--ghost" type="button" data-cms-logout data-i18n="cms.logout">Log ud</button>
+        <a class="btn btn--ghost" href={withBase('/')} data-cms-home data-i18n="notfound.home">Til forsiden</a>
+      </div>
+    </header>
+
+    <div class="cms-grid">
+      <section class="cms-panel glass">
+        <h2 data-i18n="cms.news">Nyheder</h2>
+        <form class="stack" data-cms-news-form>
+          <label>
+            <span data-i18n="cms.newsTitle">Overskrift</span>
+            <input type="text" name="title" required />
+          </label>
+          <label>
+            <span data-i18n="cms.newsBody">Tekst</span>
+            <textarea name="body" rows="4" required></textarea>
+          </label>
+          <button class="btn btn--primary" type="submit" data-i18n="cms.addNews">Tilføj nyhed</button>
+        </form>
+        <div class="stack" data-cms-news-list></div>
+      </section>
+
+      <section class="cms-panel glass">
+        <h2 data-i18n="cms.images">Billeder</h2>
+        <form class="stack" data-cms-image-form>
+          <label>
+            <span data-i18n="cms.addImage">Tilføj billede</span>
+            <input type="file" name="image" accept="image/*" required />
+          </label>
+          <label>
+            <span data-i18n="cms.alt">Billedtekst</span>
+            <input type="text" name="alt" />
+          </label>
+          <button class="btn btn--primary" type="submit" data-i18n="cms.addImage">Tilføj billede</button>
+        </form>
+        <div class="stack" data-cms-image-list></div>
+      </section>
+
+      <section class="cms-panel glass cms-panel--wide">
+        <h2 data-i18n="cms.texts">Tekster</h2>
+        <form class="stack" data-cms-text-form>
+          <label>
+            <span data-i18n="cms.texts">Tekster</span>
+            <select name="key">
+              {textKeys.map((key) => <option value={key}>{key}</option>)}
+            </select>
+          </label>
+          <label>
+            <span data-i18n="cms.newsBody">Tekst</span>
+            <textarea name="value" rows="5"></textarea>
+          </label>
+          <button class="btn btn--primary" type="submit" data-i18n="cms.saveText">Gem tekst</button>
+          <p class="muted" data-cms-saved data-i18n="cms.saved" hidden>
+            Gemt i denne browser. På det live site ser andre besøgende det, når indholdet senere lægges i projektet.
+          </p>
+        </form>
+      </section>
+    </div>
+  </div>
+</Base>

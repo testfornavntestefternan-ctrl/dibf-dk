@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import { withBase } from '../../data/site';
+---
+
+<Base title="Log ind" description="Log ind som bestyrelse for at redigere nyheder, billeder og tekster." currentPath="/bestyrelse/login">
+  <header class="page-hero">
+    <p class="kicker" data-i18n="about.boardKicker">Ledelse</p>
+    <h1 data-i18n="cms.loginTitle">Bestyrelsens adgang</h1>
+    <p class="lede" data-i18n="cms.loginLede">Log ind for at tilføje nyheder og billeder og rette tekster på sitet.</p>
+  </header>
+
+  <form class="cms-login glass" data-cms-login data-next={withBase('/bestyrelse/')}>
+    <label>
+      <span data-i18n="cms.user">Brugernavn</span>
+      <input type="text" name="username" autocomplete="username" value="Admin" required />
+    </label>
+    <label>
+      <span data-i18n="cms.pass">Adgangskode</span>
+      <input type="password" name="password" autocomplete="current-password" required />
+    </label>
+    <p class="cms-error" data-cms-error data-i18n="cms.error" hidden>Forkert brugernavn eller adgangskode.</p>
+    <p class="muted" data-i18n="cms.hint">Ændringer gemmes i denne browser.</p>
+    <button class="btn btn--primary" type="submit" data-i18n="cms.login">Log ind</button>
+  </form>
+</Base>

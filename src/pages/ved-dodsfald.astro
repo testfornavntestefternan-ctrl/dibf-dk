@@ -11,64 +11,68 @@ const totals = prices.rows[prices.rows.length - 1];
   currentPath="/ved-dodsfald"
 >
   <header class="page-hero">
-    <p class="kicker">Pårørende</p>
-    <h1>Ved dødsfald</h1>
-    <p class="lede">Når et dødsfald sker, er der nogle få trin, I skal huske. Bedemanden kan tage resten.</p>
+    <p class="kicker" data-i18n="death.kicker">Pårørende</p>
+    <h1 data-i18n="death.title">Ved dødsfald</h1>
+    <p class="lede" data-i18n="death.lede">Når et dødsfald sker, er der nogle få trin, I skal huske. Bedemanden kan tage resten.</p>
   </header>
 
   <div class="split">
     <article class="stack-lg prose">
       <section class="glass" style="padding: 1.5rem" id="trin">
-        <h2>Ved et dødsfald skal I</h2>
+        <h2 data-i18n="death.steps">Ved et dødsfald skal I</h2>
         <ol>
-          <li>Kontakte alarmcentralen på <a href="tel:112">112</a>, hvis det er akut.</li>
-          <li>Afvente at hospital eller læge har konstateret dødsfaldet og skrevet attest.</li>
-          <li>Tage kontakt til en bedemand. Bedemanden sørger for hele begravelsen.</li>
+          <li data-i18n="death.s1">Kontakte alarmcentralen på 112, hvis det er akut.</li>
+          <li data-i18n="death.s2">Afvente at hospital eller læge har konstateret dødsfaldet og skrevet attest.</li>
+          <li data-i18n="death.s3">Tage kontakt til en bedemand. Bedemanden sørger for hele begravelsen.</li>
         </ol>
       </section>
 
       <section class="glass" style="padding: 1.5rem" id="dibs">
-        <h2>Medlem af DIBS?</h2>
-        <p>
+        <h2 data-i18n="death.dibs">Medlem af DIBS?</h2>
+        <p data-i18n="death.dibsP1">
           Hvis den afdøde er medlem af DIBS (støtteforeningen), skal I oplyse bedemanden om det. DIBS betaler begravelsesomkostningerne, og bedemanden skal kontakte støtteforeningen.
         </p>
         <p>
-          Indmeldelse sker via <a href="https://mitdibf.dk/" rel="noreferrer">mitdibf.dk</a>.
+          <span data-i18n="death.dibsP2">Indmeldelse sker via mitdibf.dk.</span>
+          {' '}
+          <a href="https://mitdibf.dk/" rel="noreferrer">mitdibf.dk</a>
         </p>
       </section>
 
       <section class="glass" style="padding: 1.5rem" id="uden-kiste">
-        <h2>Begravelse uden kiste</h2>
-        <p>Kontakt gravpladsen og bedemanden for den konkrete procedure. Der kan være særlige krav til svøb, transport og gravning.</p>
+        <h2 data-i18n="death.nocoffin">Begravelse uden kiste</h2>
+        <p data-i18n="death.nocoffinP">Kontakt gravpladsen og bedemanden for den konkrete procedure. Der kan være særlige krav til svøb, transport og gravning.</p>
       </section>
 
       <section class="glass" style="padding: 1.5rem" id="efter-to-aar">
-        <h2>Gravsted efter 2 år</h2>
+        <h2 data-i18n="death.after2">Gravsted efter 2 år</h2>
         <p>
-          Gravpladsen sætter kantsten tidligst to år efter begravelsen. Gravstenen sættes af gravstedsejeren via stenhugger og skal overholde målene under gravtyperne. Se også <a href={withBase('/gravspladsen')}>ordensregler for gravpladsen</a>.
+          <span data-i18n="death.after2P">Gravpladsen sætter kantsten tidligst to år efter begravelsen. Gravstenen sættes af gravstedsejeren via stenhugger og skal overholde målene under gravtyperne. Se også ordensregler for gravpladsen.</span>
+          {' '}
+          <a href={withBase('/gravspladsen')} data-i18n="cem.title">Gravpladsen</a>
         </p>
       </section>
     </article>
 
     <aside class="stack">
-      <nav class="toc" aria-label="Indhold">
-        <h2>Indhold</h2>
-        <a href="#trin">Ved et dødsfald</a>
-        <a href="#dibs">DIBS-medlemskab</a>
-        <a href="#gravtyper">Gravtyper</a>
-        <a href="#priser">Priser</a>
-        <a href="#faq">Spørgsmål og svar</a>
+      <nav class="toc" data-i18n-aria="cem.toc" aria-label="Indhold">
+        <h2 data-i18n="cem.toc">Indhold</h2>
+        <a href="#trin" data-i18n="death.tocDeath">Ved et dødsfald</a>
+        <a href="#dibs" data-i18n="death.tocDibs">DIBS-medlemskab</a>
+        <a href="#gravtyper" data-i18n="death.tocTypes">Gravtyper</a>
+        <a href="#priser" data-i18n="death.tocPrices">Priser</a>
+        <a href="#faq" data-i18n="cem.faq">Spørgsmål og svar</a>
       </nav>
-      <a class="btn btn--primary" href={withBase('/for-bedemaend')}>Fuld prisliste til bedemænd</a>
-      <a class="btn btn--ghost" href={withBase('/kontakt')}>Kontakt os</a>
+      <a class="btn btn--primary" href={withBase('/for-bedemaend')} data-i18n="death.fullPrice">Fuld prisliste til bedemænd</a>
+      <a class="btn btn--ghost" href={withBase('/kontakt')} data-i18n="home.ctaContact">Kontakt os</a>
     </aside>
   </div>
 
   <section class="stack-lg" style="margin-block-start: 3rem" id="gravtyper">
     <div class="section-head">
-      <p class="kicker">Grave</p>
-      <h2>Tre gravtyper</h2>
-      <p class="muted">Priser er for {prices.year} og inkluderer moms, hvor det er angivet.</p>
+      <p class="kicker" data-i18n="death.gravesKicker">Grave</p>
+      <h2 data-i18n="death.gravesTitle">Tre gravtyper</h2>
+      <p class="muted" data-i18n="death.gravesLede">Priser er for 2024 og inkluderer moms, hvor det er angivet.</p>
     </div>
     <div class="grave-grid">
       {
@@ -78,9 +82,9 @@ const totals = prices.rows[prices.rows.length - 1];
               <img src={grave.image} alt="" width="800" height="600" />
             </div>
             <div class="grave-card__body">
-              <p class="grave-card__kicker">{grave.kicker}</p>
-              <h3>{grave.title}</h3>
-              <p>{grave.excerpt}</p>
+              <p class="grave-card__kicker" data-i18n={`${grave.i18n}.kicker`}>{grave.kicker}</p>
+              <h3 data-i18n={`${grave.i18n}.title`}>{grave.title}</h3>
+              <p data-i18n={`${grave.i18n}.excerpt`}>{grave.excerpt}</p>
             </div>
           </a>
         ))
@@ -90,88 +94,88 @@ const totals = prices.rows[prices.rows.length - 1];
 
   <article class="split" style="margin-block-start: 3rem" id="voksne">
     <div class="stack">
-      <img class="glass" src={withBase('/images/voksne.jpg')} alt="Voksengrav på gravpladsen" width="1000" height="750" />
+      <img class="glass" src={withBase('/images/voksne.jpg')} alt="Voksengrav på gravpladsen" width="1000" height="750" data-i18n-alt="grave.adult.alt" />
       <div class="prose glass" style="padding: 1.5rem">
-        <h2>Voksengrav</h2>
-        <p>
+        <h2 data-i18n="grave.adult.title">Voksengrav</h2>
+        <p data-i18n="grave.adult.p1">
           En voksengrav har 30 års fredning. Prisen i {prices.year} er 25.000 kr. inkl. moms og dækker gravsted, gravning og dækning, administration samt kantsten, der sættes efter mindst to år.
         </p>
-        <p>
+        <p data-i18n="grave.adult.p2">
           Gravstenen sættes af gravstedsejeren via stenhugger. Mål: max. 40 cm højde × 58 cm bredde. Stenen skal være en liggesten med hævet bagkant, anbragt nedlagt i græs i gravens midterlinje.
         </p>
-        <p>
+        <p data-i18n="grave.adult.p3">
           Weekend- og helligdagstillæg er 4.000 kr. Bestilling sker via bedemand.
         </p>
       </div>
     </div>
     <aside class="toc">
-      <h2>Nøgletal</h2>
-      <p>Fredning: 30 år</p>
-      <p>Samlet pris: 25.000 kr.</p>
-      <p>Kantsten: efter 2 år</p>
-      <p>Gravsten: max. 40 × 58 cm</p>
+      <h2 data-i18n="grave.stats">Nøgletal</h2>
+      <p><span data-i18n="grave.peace">Fredning</span>: 30 år</p>
+      <p><span data-i18n="grave.price">Samlet pris</span>: 25.000 kr.</p>
+      <p><span data-i18n="grave.curb">Kantsten</span>: <span data-i18n="grave.after2">efter 2 år</span></p>
+      <p><span data-i18n="grave.stone">Gravsten</span>: max. 40 × 58 cm</p>
     </aside>
   </article>
 
   <article class="split" style="margin-block-start: 3rem" id="born">
     <div class="stack">
-      <img class="glass" src={withBase('/images/born.jpg')} alt="Børnegrav på gravpladsen" width="1280" height="960" />
+      <img class="glass" src={withBase('/images/born.jpg')} alt="Børnegrav på gravpladsen" width="1280" height="960" data-i18n-alt="grave.child.alt" />
       <div class="prose glass" style="padding: 1.5rem">
-        <h2>Børnegrav</h2>
-        <p>
+        <h2 data-i18n="grave.child.title">Børnegrav</h2>
+        <p data-i18n="grave.child.p1">
           En børnegrav gælder kister på højst 1 meter. Fredningen er 30 år. Samlet pris i {prices.year} er 12.750 kr. inkl. moms og dækker gravsted, gravning og dækning, administration samt kantsten efter mindst to år.
         </p>
-        <p>Gravsten: max. 30 × 30 cm. Trækantsten koster 500 kr. Weekend- og helligdagstillæg er 2.000 kr.</p>
+        <p data-i18n="grave.child.p2">Gravsten: max. 30 × 30 cm. Trækantsten koster 500 kr. Weekend- og helligdagstillæg er 2.000 kr.</p>
       </div>
     </div>
     <aside class="toc">
-      <h2>Nøgletal</h2>
-      <p>Længde: max. 1 m</p>
-      <p>Fredning: 30 år</p>
-      <p>Samlet pris: 12.750 kr.</p>
-      <p>Gravsten: max. 30 × 30 cm</p>
+      <h2 data-i18n="grave.stats">Nøgletal</h2>
+      <p><span data-i18n="grave.length">Længde</span>: max. 1 m</p>
+      <p><span data-i18n="grave.peace">Fredning</span>: 30 år</p>
+      <p><span data-i18n="grave.price">Samlet pris</span>: 12.750 kr.</p>
+      <p><span data-i18n="grave.stone">Gravsten</span>: max. 30 × 30 cm</p>
     </aside>
   </article>
 
   <article class="split" style="margin-block-start: 3rem" id="fostre">
     <div class="stack">
-      <img class="glass" src={withBase('/images/fostre.jpg')} alt="Fostergrav på gravpladsen" width="1280" height="960" />
+      <img class="glass" src={withBase('/images/fostre.jpg')} alt="Fostergrav på gravpladsen" width="1280" height="960" data-i18n-alt="grave.fetus.alt" />
       <div class="prose glass" style="padding: 1.5rem">
-        <h2>Fostergrav</h2>
-        <p>
+        <h2 data-i18n="grave.fetus.title">Fostergrav</h2>
+        <p data-i18n="grave.fetus.p1">
           Fostergrave har 5 års fredning. Den samlede pris i {prices.year} er 5.750 kr. inkl. moms og dækker gravsted, gravning og dækning samt administration. Der sættes ikke kantsten, og gravsten er ikke en del af standardydelsen.
         </p>
-        <p>Weekend- og helligdagstillæg er 1.000 kr. Bestilling skal ske mindst 6 timer før, og begravelsen afventer skriftlig bekræftelse.</p>
+        <p data-i18n="grave.fetus.p2">Weekend- og helligdagstillæg er 1.000 kr. Bestilling skal ske mindst 6 timer før, og begravelsen afventer skriftlig bekræftelse.</p>
       </div>
     </div>
     <aside class="toc">
-      <h2>Nøgletal</h2>
-      <p>Fredning: 5 år</p>
-      <p>Samlet pris: 5.750 kr.</p>
-      <p>Kantsten: 0 kr.</p>
-      <p>Tillæg weekend: 1.000 kr.</p>
+      <h2 data-i18n="grave.stats">Nøgletal</h2>
+      <p><span data-i18n="grave.peace">Fredning</span>: 5 år</p>
+      <p><span data-i18n="grave.price">Samlet pris</span>: 5.750 kr.</p>
+      <p><span data-i18n="grave.curb">Kantsten</span>: 0 kr.</p>
+      <p><span data-i18n="grave.weekend">Tillæg weekend</span>: 1.000 kr.</p>
     </aside>
   </article>
 
   <section style="margin-block-start: 3rem" id="priser">
     <div class="section-head">
-      <p class="kicker">Priser {prices.year}</p>
-      <h2>Samlet beløb</h2>
-      <p class="muted">Det I betaler i alt, inkl. moms. Den fulde opdeling ligger hos bedemændene.</p>
+      <p class="kicker" data-i18n="death.totalKicker">Priser {prices.year}</p>
+      <h2 data-i18n="death.totalTitle">Samlet beløb</h2>
+      <p class="muted" data-i18n="death.totalLede">Det I betaler i alt, inkl. moms. Den fulde opdeling ligger hos bedemændene.</p>
     </div>
     <div class="table-wrap">
       <table class="data">
         <thead>
           <tr>
-            <th>Ydelse</th>
-            <th>Voksen</th>
-            <th>Barn (max 1 m)</th>
-            <th>Foster</th>
+            <th data-i18n="price.service">Ydelse</th>
+            <th data-i18n="price.adult">Voksen</th>
+            <th data-i18n="price.child">Barn (max 1 m)</th>
+            <th data-i18n="price.fetus">Foster</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>{totals.label}</td>
+            <td data-i18n={totals.i18n}>{totals.label}</td>
             <td>{totals.adult}</td>
             <td>{totals.child}</td>
             <td>{totals.fetus}</td>
@@ -180,28 +184,34 @@ const totals = prices.rows[prices.rows.length - 1];
       </table>
     </div>
     <p class="muted" style="margin-block-start: 0.8rem">
-      {prices.extra} <a href={withBase('/for-bedemaend')}>Se fuld prisliste</a>.
+      <span data-i18n="price.extra">{prices.extra}</span>
+      {' '}
+      <a href={withBase('/for-bedemaend')} data-i18n="death.seeFull">Se fuld prisliste</a>.
     </p>
   </section>
 
   <section class="stack" style="margin-block-start: 3rem" id="faq">
-    <h2>Spørgsmål og svar</h2>
+    <h2 data-i18n="cem.faq">Spørgsmål og svar</h2>
     <details class="glass" style="padding: 1.1rem 1.3rem">
-      <summary><strong>Hvordan ordner jeg selv en begravelse?</strong></summary>
-      <p>
+      <summary><strong data-i18n="death.faq1q">Hvordan ordner jeg selv en begravelse?</strong></summary>
+      <p data-i18n="death.faq1a">
         Lægen skriver dødsattest. Derefter anmoder du om begravelse via borger.dk. Sognet kan først godkende, når dato og tid er fastsat. Bestil gravpladsen hos os på {contact.phone} senest kl. 12:00 hverdagen før. Du må selv transportere afdøde, eller en bedemand kan gøre det. Begravelseshjælp søges på borger.dk.
       </p>
     </details>
     <details class="glass" style="padding: 1.1rem 1.3rem">
-      <summary><strong>Hvad betaler jeg for?</strong></summary>
+      <summary><strong data-i18n="death.faq2q">Hvad betaler jeg for?</strong></summary>
       <p>
-        Prisen dækker gravning, fredning i 30 år (5 år for foster) og renholdelse af fællesarealer. Fredning kan forlænges senere. Se <a href={withBase('/for-bedemaend')}>den fulde prisliste</a>.
+        <span data-i18n="death.faq2a">Prisen dækker gravning, fredning i 30 år (5 år for foster) og renholdelse af fællesarealer. Fredning kan forlænges senere.</span>
+        {' '}
+        <a href={withBase('/for-bedemaend')} data-i18n="death.seeFull">Se fuld prisliste</a>.
       </p>
     </details>
     <details class="glass" style="padding: 1.1rem 1.3rem">
-      <summary><strong>Hvordan bliver jeg medlem af DIBS?</strong></summary>
+      <summary><strong data-i18n="death.faq3q">Hvordan bliver jeg medlem af DIBS?</strong></summary>
       <p>
-        Udfyld og underskriv indmeldelsesblanketten hos <a href="https://mitdibf.dk/" rel="noreferrer">Dansk Islamisk Begravelsesfonds støtteforening</a>.
+        <span data-i18n="death.faq3a">Udfyld og underskriv indmeldelsesblanketten hos Dansk Islamisk Begravelsesfonds støtteforening.</span>
+        {' '}
+        <a href="https://mitdibf.dk/" rel="noreferrer">mitdibf.dk</a>
       </p>
     </details>
   </section>
