@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { contact, graves, prices } from '../data/site';
+import { contact, graves, prices, withBase } from '../data/site';
 
 const totals = prices.rows[prices.rows.length - 1];
 ---
@@ -45,7 +45,7 @@ const totals = prices.rows[prices.rows.length - 1];
       <section class="glass" style="padding: 1.5rem" id="efter-to-aar">
         <h2>Gravsted efter 2 år</h2>
         <p>
-          Gravpladsen sætter kantsten tidligst to år efter begravelsen. Gravstenen sættes af gravstedsejeren via stenhugger og skal overholde målene under gravtyperne. Se også <a href="/gravspladsen">ordensregler for gravpladsen</a>.
+          Gravpladsen sætter kantsten tidligst to år efter begravelsen. Gravstenen sættes af gravstedsejeren via stenhugger og skal overholde målene under gravtyperne. Se også <a href={withBase('/gravspladsen')}>ordensregler for gravpladsen</a>.
         </p>
       </section>
     </article>
@@ -59,8 +59,8 @@ const totals = prices.rows[prices.rows.length - 1];
         <a href="#priser">Priser</a>
         <a href="#faq">Spørgsmål og svar</a>
       </nav>
-      <a class="btn btn--primary" href="/for-bedemaend">Fuld prisliste til bedemænd</a>
-      <a class="btn btn--ghost" href="/kontakt">Kontakt os</a>
+      <a class="btn btn--primary" href={withBase('/for-bedemaend')}>Fuld prisliste til bedemænd</a>
+      <a class="btn btn--ghost" href={withBase('/kontakt')}>Kontakt os</a>
     </aside>
   </div>
 
@@ -90,7 +90,7 @@ const totals = prices.rows[prices.rows.length - 1];
 
   <article class="split" style="margin-block-start: 3rem" id="voksne">
     <div class="stack">
-      <img class="glass" src="/images/voksne.jpg" alt="Voksengrav på gravpladsen" width="1000" height="750" />
+      <img class="glass" src={withBase('/images/voksne.jpg')} alt="Voksengrav på gravpladsen" width="1000" height="750" />
       <div class="prose glass" style="padding: 1.5rem">
         <h2>Voksengrav</h2>
         <p>
@@ -115,7 +115,7 @@ const totals = prices.rows[prices.rows.length - 1];
 
   <article class="split" style="margin-block-start: 3rem" id="born">
     <div class="stack">
-      <img class="glass" src="/images/born.jpg" alt="Børnegrav på gravpladsen" width="1280" height="960" />
+      <img class="glass" src={withBase('/images/born.jpg')} alt="Børnegrav på gravpladsen" width="1280" height="960" />
       <div class="prose glass" style="padding: 1.5rem">
         <h2>Børnegrav</h2>
         <p>
@@ -135,7 +135,7 @@ const totals = prices.rows[prices.rows.length - 1];
 
   <article class="split" style="margin-block-start: 3rem" id="fostre">
     <div class="stack">
-      <img class="glass" src="/images/fostre.jpg" alt="Fostergrav på gravpladsen" width="1280" height="960" />
+      <img class="glass" src={withBase('/images/fostre.jpg')} alt="Fostergrav på gravpladsen" width="1280" height="960" />
       <div class="prose glass" style="padding: 1.5rem">
         <h2>Fostergrav</h2>
         <p>
@@ -180,7 +180,7 @@ const totals = prices.rows[prices.rows.length - 1];
       </table>
     </div>
     <p class="muted" style="margin-block-start: 0.8rem">
-      {prices.extra} <a href="/for-bedemaend">Se fuld prisliste</a>.
+      {prices.extra} <a href={withBase('/for-bedemaend')}>Se fuld prisliste</a>.
     </p>
   </section>
 
@@ -195,7 +195,7 @@ const totals = prices.rows[prices.rows.length - 1];
     <details class="glass" style="padding: 1.1rem 1.3rem">
       <summary><strong>Hvad betaler jeg for?</strong></summary>
       <p>
-        Prisen dækker gravning, fredning i 30 år (5 år for foster) og renholdelse af fællesarealer. Fredning kan forlænges senere. Se <a href="/for-bedemaend">den fulde prisliste</a>.
+        Prisen dækker gravning, fredning i 30 år (5 år for foster) og renholdelse af fællesarealer. Fredning kan forlænges senere. Se <a href={withBase('/for-bedemaend')}>den fulde prisliste</a>.
       </p>
     </details>
     <details class="glass" style="padding: 1.1rem 1.3rem">

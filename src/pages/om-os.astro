@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { board, contact, founders } from '../data/site';
+import { board, contact, founders, withBase } from '../data/site';
 ---
 
 <Base
@@ -60,9 +60,9 @@ import { board, contact, founders } from '../data/site';
         <a href="#historie">Historie</a>
         <a href="#bestyrelsen">Bestyrelsen</a>
         <a href="#stiftende">Stiftende foreninger</a>
-        <a href="/gravspladsen">Gravpladsen i dag</a>
+        <a href={withBase('/gravspladsen')}>Gravpladsen i dag</a>
       </div>
-      <img class="glass" src="/images/logo-full.png" alt="DIBF-logo" width="400" height="370" style="padding: 1.5rem" />
+      <img class="glass" src={withBase('/images/logo-full.png')} alt="DIBF-logo" width="400" height="370" style="padding: 1.5rem" />
     </aside>
   </article>
 

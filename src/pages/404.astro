@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { withBase } from '../data/site';
 ---
 
 <Base title="Siden findes ikke" currentPath="">
@@ -8,8 +9,8 @@ import Base from '../layouts/Base.astro';
     <h1>Vi fandt ikke siden.</h1>
     <p class="lede">Gå tilbage til forsiden, eller brug menuen til at finde gravpladsen, vejledning og kontakt.</p>
     <div class="cta-row">
-      <a class="btn btn--primary" href="/">Til forsiden</a>
-      <a class="btn btn--ghost" href="/kontakt">Kontakt os</a>
+      <a class="btn btn--primary" href={withBase('/')}>Til forsiden</a>
+      <a class="btn btn--ghost" href={withBase('/kontakt')}>Kontakt os</a>
     </div>
   </header>
 </Base>

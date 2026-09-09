@@ -1,5 +1,9 @@
 /** Shared site content — edit this file to update copy, nav, and contact. */
 
+import { withBase } from '../lib/paths';
+
+export { withBase } from '../lib/paths';
+
 export const site = {
   name: 'DIBF',
   fullName: 'Dansk Islamisk Begravelsesfond',
@@ -35,21 +39,21 @@ export const nav = [
 
 export const paths = [
   {
-    href: '/ved-dodsfald',
+    href: withBase('/ved-dodsfald'),
     kicker: 'Pårørende',
     title: 'Ved dødsfald',
     text: 'Hvad I skal gøre, gravtyper, priser og DIBS-medlemskab.',
     accent: 'amber',
   },
   {
-    href: '/gravspladsen',
+    href: withBase('/gravspladsen'),
     kicker: 'Besøg',
     title: 'Gravpladsen',
     text: 'Ordensregler, dua, kort og billeder fra Brøndby.',
     accent: 'teal',
   },
   {
-    href: '/for-bedemaend',
+    href: withBase('/for-bedemaend'),
     kicker: 'Professionelle',
     title: 'For bedemænd',
     text: 'Bestilling, prisliste og ansvarsfordeling.',
@@ -64,8 +68,8 @@ export const graves = [
     kicker: 'Fredning 30 år',
     excerpt:
       'Voksengrav med 30 års fredning. Gravsten, kantsten og vedligeholdelse følger gravpladsens regler.',
-    image: '/images/voksne.jpg',
-    href: '/ved-dodsfald#voksne',
+    image: withBase('/images/voksne.jpg'),
+    href: withBase('/ved-dodsfald#voksne'),
     accent: 'amber',
   },
   {
@@ -74,8 +78,8 @@ export const graves = [
     kicker: 'Fredning 5 år',
     excerpt:
       'Et stille sted for de mindste. Fostergrave har 5 års fredning og egne rammer for sten og kant.',
-    image: '/images/fostre.jpg',
-    href: '/ved-dodsfald#fostre',
+    image: withBase('/images/fostre.jpg'),
+    href: withBase('/ved-dodsfald#fostre'),
     accent: 'teal',
   },
   {
@@ -84,8 +88,8 @@ export const graves = [
     kicker: 'Fredning 30 år',
     excerpt:
       'Børnegrave (max. 1 m) med 30 års fredning og tilpassede mål for gravsten og kantsten.',
-    image: '/images/born.jpg',
-    href: '/ved-dodsfald#born',
+    image: withBase('/images/born.jpg'),
+    href: withBase('/ved-dodsfald#born'),
     accent: 'aurora',
   },
 ] as const;
@@ -143,15 +147,15 @@ export const prices = {
 };
 
 export const gallery = [
-  { src: '/images/kort.png', alt: 'Kort over gravpladsen i Brøndby' },
-  { src: '/images/port.jpg', alt: 'Indgangen til gravpladsen' },
-  { src: '/images/bgravu2.jpg', alt: 'Gravpladsen set fra oven' },
-  { src: '/images/b1.jpg', alt: 'Gravpladsen i Brøndby' },
-  { src: '/images/b2.jpg', alt: 'Stier og grave' },
-  { src: '/images/b3.jpg', alt: 'Gravsteder' },
-  { src: '/images/b4.jpg', alt: 'Gravpladsens område' },
-  { src: '/images/b5.jpg', alt: 'Udsigt over gravpladsen' },
-  { src: '/images/b6.jpg', alt: 'Beplantning og grave' },
-  { src: '/images/b7.jpg', alt: 'Gravpladsens landskab' },
-  { src: '/images/grave.png', alt: 'Oversigt over grave' },
+  { src: withBase('/images/kort.png'), alt: 'Kort over gravpladsen i Brøndby' },
+  { src: withBase('/images/port.jpg'), alt: 'Indgangen til gravpladsen' },
+  { src: withBase('/images/bgravu2.jpg'), alt: 'Gravpladsen set fra oven' },
+  { src: withBase('/images/b1.jpg'), alt: 'Gravpladsen i Brøndby' },
+  { src: withBase('/images/b2.jpg'), alt: 'Stier og grave' },
+  { src: withBase('/images/b3.jpg'), alt: 'Gravsteder' },
+  { src: withBase('/images/b4.jpg'), alt: 'Gravpladsens område' },
+  { src: withBase('/images/b5.jpg'), alt: 'Udsigt over gravpladsen' },
+  { src: withBase('/images/b6.jpg'), alt: 'Beplantning og grave' },
+  { src: withBase('/images/b7.jpg'), alt: 'Gravpladsens landskab' },
+  { src: withBase('/images/grave.png'), alt: 'Oversigt over grave' },
 ];

@@ -7,6 +7,7 @@ const site = process.env.PUBLIC_SITE || 'http://localhost:3355';
 export default defineConfig({
   site,
   base,
+  trailingSlash: 'always',
   server: {
     port: 3355,
     host: true,

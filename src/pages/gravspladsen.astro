@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { contact, gallery } from '../data/site';
+import { contact, gallery, withBase } from '../data/site';
 ---
 
 <Base title="Gravpladsen" description="Ordensregler, dua, billeder og praktisk information om den muslimske gravplads i Brøndby." currentPath="/gravspladsen">
@@ -50,7 +50,7 @@ import { contact, gallery } from '../data/site';
           Efter Salat-ul Janazah i moskéen kører bedemanden kisten til begravelsespladsen. Imamen vil sammen med pårørende, familie, venner og bekendte begrave den afdøde og lave dua. Derefter kan pårørende blive og tage imod kondolencer.
         </p>
         <p class="muted">Gravpladsen kan fjerne genstande, der er lagt på graven ud over det tilladte, og tager ikke ansvar for fjernede genstande.</p>
-        <p class="muted">Skal I arrangere en begravelse? Se <a href="/ved-dodsfald">ved dødsfald</a>.</p>
+        <p class="muted">Skal I arrangere en begravelse? Se <a href={withBase('/ved-dodsfald')}>ved dødsfald</a>.</p>
       </section>
     </article>
 
@@ -63,7 +63,7 @@ import { contact, gallery } from '../data/site';
         <a href="#billeder">Billeder</a>
         <a href="#faq">Spørgsmål og svar</a>
       </nav>
-      <img class="glass" src="/images/kort.png" alt="Kort over gravpladsen" width="1024" height="434" />
+      <img class="glass" src={withBase('/images/kort.png')} alt="Kort over gravpladsen" width="1024" height="434" />
     </aside>
   </div>
 

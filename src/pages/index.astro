@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { contact, paths, site } from '../data/site';
+import { contact, paths, site, withBase } from '../data/site';
 ---
 
 <Base title={site.name} currentPath="/">
@@ -10,12 +10,12 @@ import { contact, paths, site } from '../data/site';
       <h1>Et sted for værdighed, ro og fællesskab.</h1>
       <p class="lede">{site.tagline}</p>
       <div class="cta-row">
-        <a class="btn btn--primary" href="/ved-dodsfald">Ved dødsfald</a>
-        <a class="btn btn--ghost" href="/kontakt">Kontakt os</a>
+        <a class="btn btn--primary" href={withBase('/ved-dodsfald')}>Ved dødsfald</a>
+        <a class="btn btn--ghost" href={withBase('/kontakt')}>Kontakt os</a>
       </div>
     </div>
     <figure class="hero-panel">
-      <img src="/images/port.jpg" alt="Indgangen til den muslimske gravplads i Brøndby" width="1200" height="900" />
+      <img src={withBase('/images/port.jpg')} alt="Indgangen til den muslimske gravplads i Brøndby" width="1200" height="900" />
       <figcaption class="hero-panel__meta">
         <strong>Brøndbyøstervej 180</strong>
         <p class="muted">Danmarks første muslimske gravplads uden tilknytning til en kristen kirkegård. Indviet 22. september 2006.</p>

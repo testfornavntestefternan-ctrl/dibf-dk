@@ -1,6 +1,6 @@
 ---
 import { ClientRouter } from 'astro:transitions';
-import { contact, nav, site } from '../data/site';
+import { contact, nav, site, withBase } from '../data/site';
 import '../styles/global.css';
 
 interface Props {
@@ -21,7 +21,7 @@ const pageTitle = title === site.name ? `${site.fullName}` : `${title} – ${sit
     <meta name="description" content={description} />
     <meta name="theme-color" content="#0a0e1a" />
     <meta name="view-transition" content="same-origin" />
-    <link rel="icon" href="/images/favicon.png" type="image/png" />
+    <link rel="icon" href={withBase('/images/favicon.png')} type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -52,8 +52,8 @@ const pageTitle = title === site.name ? `${site.fullName}` : `${title} – ${sit
 
     <header class="site-header">
       <div class="wrap site-header__inner">
-        <a class="brand" href="/" data-astro-prefetch>
-          <img src="/images/logo-badge.png" alt="DIBF-logo" width="48" height="48" />
+        <a class="brand" href={withBase('/')} data-astro-prefetch>
+          <img src={withBase('/images/logo-badge.png')} alt="DIBF-logo" width="48" height="48" />
           <span class="brand__text">
             <span class="brand__name">{site.name}</span>
             <span class="brand__sub">Gravplads Brøndby</span>
@@ -64,7 +64,7 @@ const pageTitle = title === site.name ? `${site.fullName}` : `${title} – ${sit
           {
             nav.map((item) => (
               <a
-                href={item.href}
+                href={withBase(item.href)}
                 aria-current={currentPath === item.href ? 'page' : undefined}
                 data-astro-prefetch
               >
@@ -97,7 +97,7 @@ const pageTitle = title === site.name ? `${site.fullName}` : `${title} – ${sit
       <div class="wrap drawer" id="mobile-nav" data-drawer data-open="false">
         {
           nav.map((item) => (
-            <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>
+            <a href={withBase(item.href)} aria-current={currentPath === item.href ? 'page' : undefined}>
               {item.label}
             </a>
           ))
@@ -137,7 +137,7 @@ const pageTitle = title === site.name ? `${site.fullName}` : `${title} – ${sit
       </div>
       <div class="wrap legal">
         <span>© {new Date().getFullYear()} {site.fullName}</span>
-        <a href="/om-os">Om fonden</a>
+        <a href={withBase('/om-os')}>Om fonden</a>
       </div>
     </footer>
 
