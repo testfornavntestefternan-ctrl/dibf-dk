@@ -1,0 +1,152 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import { contact, nav, site } from '../data/site';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  currentPath: string;
+}
+
+const { title, description = site.description, currentPath } = Astro.props;
+const pageTitle = title === site.name ? `${site.fullName}` : `${title} – ${site.name}`;
+---
+
+<!doctype html>
+<html lang={site.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0a0e1a" />
+    <meta name="view-transition" content="same-origin" />
+    <link rel="icon" href="/images/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:opsz,wght@14..32,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{pageTitle}</title>
+    <ClientRouter />
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem('dibf-theme');
+          document.documentElement.dataset.theme = stored || 'dark';
+        } catch (e) {
+          document.documentElement.dataset.theme = 'dark';
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Spring til indhold</a>
+    <div class="aurora" aria-hidden="true">
+      <div class="aurora__blob aurora__blob--a"></div>
+      <div class="aurora__blob aurora__blob--b"></div>
+      <div class="aurora__blob aurora__blob--c"></div>
+    </div>
+    <canvas class="stars" id="starfield" aria-hidden="true"></canvas>
+
+    <header class="site-header">
+      <div class="wrap site-header__inner">
+        <a class="brand" href="/" data-astro-prefetch>
+          <img src="/images/logo-badge.png" alt="DIBF-logo" width="48" height="48" />
+          <span class="brand__text">
+            <span class="brand__name">{site.name}</span>
+            <span class="brand__sub">Gravplads Brøndby</span>
+          </span>
+        </a>
+
+        <nav class="nav" aria-label="Hovednavigation">
+          {
+            nav.map((item) => (
+              <a
+                href={item.href}
+                aria-current={currentPath === item.href ? 'page' : undefined}
+                data-astro-prefetch
+              >
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+
+        <div class="header-actions">
+          <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false" aria-label="Skift tema">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3a9 9 0 1 0 9 9c0-.5-.04-1-.12-1.48A7 7 0 0 1 12 3Z" stroke="currentColor" stroke-width="1.7" />
+            </svg>
+          </button>
+          <button
+            class="icon-btn menu-toggle"
+            type="button"
+            data-menu-toggle
+            aria-expanded="false"
+            aria-controls="mobile-nav"
+            aria-label="Åbn menu"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="wrap drawer" id="mobile-nav" data-drawer data-open="false">
+        {
+          nav.map((item) => (
+            <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
+    </header>
+
+    <main id="content" class="page wrap" transition:animate="fade">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap site-footer__grid">
+        <div>
+          <h2>Adresse</h2>
+          <p>
+            {contact.address[0]}<br />
+            {contact.address[1]}<br />
+            <a href={contact.phoneHref}>{contact.phone}</a>
+          </p>
+        </div>
+        <div>
+          <h2>Kontakt</h2>
+          <p>
+            <a href={`mailto:${contact.emails.bestyrelse}`}>{contact.emails.bestyrelse}</a><br />
+            <a href={`mailto:${contact.emails.drift}`}>{contact.emails.drift}</a><br />
+            CVR {contact.cvr}
+          </p>
+        </div>
+        <div>
+          <h2>Åbningstider</h2>
+          <p>
+            Kontor: {contact.hours}<br />
+            {site.fullName}
+          </p>
+        </div>
+      </div>
+      <div class="wrap legal">
+        <span>© {new Date().getFullYear()} {site.fullName}</span>
+        <span>Ikke WordPress — et selvstændigt site, der er nemt at udvide.</span>
+      </div>
+    </footer>
+
+    <a class="icon-btn to-top" href="#content" data-to-top aria-label="Til toppen">↑</a>
+
+    <script>
+      import { boot } from '../scripts/ui';
+      boot();
+      document.addEventListener('astro:page-load', boot);
+    </script>
+  </body>
+</html>

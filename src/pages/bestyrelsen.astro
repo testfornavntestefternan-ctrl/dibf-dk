@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import { board, contact, founders } from '../data/site';
+---
+
+<Base title="Bestyrelsen" description="Bestyrelsen for Dansk Islamisk Begravelsesfond 2026 og de stiftende foreninger." currentPath="/bestyrelsen">
+  <header class="page-hero">
+    <p class="kicker">Ledelse</p>
+    <h1>Bestyrelsen</h1>
+    <p class="lede">Bestyrelsen for 2026. Forslag og klager sendes til {contact.emails.forslag}.</p>
+  </header>
+
+  <div class="board-grid">
+    {
+      board.map((member) => (
+        <article class="person">
+          <h2>{member.name}</h2>
+          <span>{member.role}</span>
+        </article>
+      ))
+    }
+  </div>
+
+  <section class="stack" style="margin-block-start: 3rem">
+    <div class="section-head">
+      <p class="kicker">Stiftende foreninger</p>
+      <h2>Fonden er stiftet af</h2>
+    </div>
+    <div class="org-grid">
+      {
+        founders.map((org) => (
+          <article class="org">
+            <strong>{org.name}</strong>
+            <span>{org.address}{org.cvr ? ` · CVR ${org.cvr}` : ''}{org.note ? ` · ${org.note}` : ''}</span>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <p class="muted" style="margin-block-start: 2rem">
+    E-mail: <a href={`mailto:${contact.emails.bestyrelse}`}>{contact.emails.bestyrelse}</a>
+  </p>
+</Base>

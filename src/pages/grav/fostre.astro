@@ -1,0 +1,44 @@
+---
+import Base from '../../layouts/Base.astro';
+import RelatedGraves from '../../components/RelatedGraves.astro';
+---
+
+<Base title="Fostre grav" description="Fostergrav på DIBF-gravpladsen: 5 års fredning og egne priser." currentPath="/grav/fostre">
+  <header class="page-hero">
+    <p class="kicker">Fredning 5 år</p>
+    <h1>Fostre grav</h1>
+    <p class="lede">Et stille sted for de mindste. Fostergrave har kortere fredning og enklere rammer for sten og kant.</p>
+  </header>
+
+  <article class="split">
+    <div class="stack">
+      <img class="glass" src="/images/fostre.jpg" alt="Fostergrav på gravpladsen" width="1280" height="960" />
+      <div class="prose glass" style="padding: 1.5rem">
+        <p>
+          Fostergrave har 5 års fredning. Den samlede pris i 2024 er 5.750 kr. inkl. moms og dækker gravsted, gravning og dækning samt administration. Der sættes ikke kantsten, og gravsten er ikke en del af standardydelsen.
+        </p>
+        <p>
+          Weekend- og helligdagstillæg er 1.000 kr. Bestilling skal ske mindst 6 timer før, og begravelsen afventer skriftlig bekræftelse.
+        </p>
+        <p>
+          De samme ordensregler gælder som på resten af gravpladsen: respekt, diskretion og ingen genstande ud over det tilladte. Læs mere under <a href="/gravspladsen">gravpladsen</a>.
+        </p>
+      </div>
+    </div>
+    <aside class="stack">
+      <div class="toc">
+        <h2>Nøgletal</h2>
+        <p>Fredning: 5 år</p>
+        <p>Samlet pris: 5.750 kr.</p>
+        <p>Kantsten: 0 kr.</p>
+        <p>Tillæg weekend: 1.000 kr.</p>
+      </div>
+      <a class="btn btn--primary" href="/kontakt">Kontakt gravpladsen</a>
+    </aside>
+  </article>
+
+  <section style="margin-block-start: 3rem">
+    <h2 class="section-head">Andre gravtyper</h2>
+    <RelatedGraves exclude="fostre" />
+  </section>
+</Base>

@@ -1,0 +1,79 @@
+---
+import Base from '../layouts/Base.astro';
+import { contact, prices } from '../data/site';
+---
+
+<Base title="For bedemænd" description="Bestilling, prisliste og bedemandens opgaver ved begravelse på DIBF-gravpladsen." currentPath="/for-bedemaend">
+  <header class="page-hero">
+    <p class="kicker">Professionelle</p>
+    <h1>For bedemænd</h1>
+    <p class="lede">Bestilling, priser og ansvarsfordeling. Begravelse finder først sted, når I har modtaget bekræftelse.</p>
+  </header>
+
+  <div class="stack-lg">
+    <section class="glass" style="padding: 1.5rem">
+      <h2>Bestilling</h2>
+      <ul>
+        <li>Udfyld bestillingsseddel og send den til <a href={`mailto:${contact.emails.bestilling}`}>{contact.emails.bestilling}</a>.</li>
+        <li>Begravelse finder ikke sted, før I modtager bekræftelse.</li>
+        <li>Bestilling skal ske mindst 6 timer før begravelsen.</li>
+        <li>Ring også til kontoret på <a href={contact.phoneHref}>{contact.phone}</a> ({contact.hours}).</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <p class="kicker">Priser {prices.year}</p>
+        <h2>Prisliste for begravelse</h2>
+      </div>
+      <div class="table-wrap">
+        <table class="data">
+          <thead>
+            <tr>
+              <th>Ydelse</th>
+              <th>Voksen</th>
+              <th>Barn (max 1 m)</th>
+              <th>Foster</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              prices.rows.map((row) => (
+                <tr>
+                  <td>{row.label}</td>
+                  <td>{row.adult}</td>
+                  <td>{row.child}</td>
+                  <td>{row.fetus}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="muted" style="margin-block-start: 0.8rem">{prices.extra}</p>
+    </section>
+
+    <section class="split">
+      <div class="glass" style="padding: 1.5rem">
+        <h2>Bedemandens opgaver</h2>
+        <ul>
+          <li>Kontakt til hospitalet ved afhentning af den afdøde</li>
+          <li>Godkendelse og aflevering af dokumenter til hospital, gravplads og kommune</li>
+          <li>Fremskaffelse af kiste og ligklæder</li>
+          <li>Bestilling af gravplads</li>
+          <li>Transport af kisten til moskeen</li>
+          <li>Transport af kisten fra moskeen til gravpladsen</li>
+          <li>Økonomi i forhold til bedemand, kommune og gravplads</li>
+        </ul>
+      </div>
+      <div class="glass" style="padding: 1.5rem">
+        <h2>Familien står selv for</h2>
+        <ul>
+          <li>Afvaskning af den afdøde (i samarbejde med bedemanden)</li>
+          <li>Aftale med moskeen om begravelsesbøn, Salat-ul Janazah</li>
+        </ul>
+        <p class="muted">Gravpladsen er ikke praktisk involveret i forbindelse med et dødsfald ud over gravning, gravsted og administration.</p>
+      </div>
+    </section>
+  </div>
+</Base>

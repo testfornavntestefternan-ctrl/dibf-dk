@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import { contact } from '../data/site';
+
+const mailto = `mailto:${contact.emails.bestyrelse}`;
+---
+
+<Base title="Kontakt os" description="Adresse, telefon, e-mail og åbningstider for Dansk Islamisk Begravelsesfond." currentPath="/kontakt">
+  <header class="page-hero">
+    <p class="kicker">Vi er her</p>
+    <h1>Kontakt os</h1>
+    <p class="lede">Kontoret træffes {contact.hours}. Bestilling af gravplads sker via bedemand eller direkte til os.</p>
+  </header>
+
+  <div class="contact-grid">
+    <div class="contact-card">
+      <h2>Adresse og telefon</h2>
+      <p>
+        DIBF<br />
+        {contact.address[0]}<br />
+        {contact.address[1]}
+      </p>
+      <p>
+        Tlf. <a href={contact.phoneHref}>{contact.phone}</a><br />
+        {contact.hours}
+      </p>
+      <p>CVR {contact.cvr}</p>
+    </div>
+    <div class="contact-card">
+      <h2>E-mail</h2>
+      <p>Driftsleder: <a href={`mailto:${contact.emails.drift}`}>{contact.emails.drift}</a></p>
+      <p>Bestyrelse: <a href={`mailto:${contact.emails.bestyrelse}`}>{contact.emails.bestyrelse}</a></p>
+      <p>Forslag og klager: <a href={`mailto:${contact.emails.forslag}`}>{contact.emails.forslag}</a></p>
+      <p>Bestilling: <a href={`mailto:${contact.emails.bestilling}`}>{contact.emails.bestilling}</a></p>
+    </div>
+  </div>
+
+  <form class="stack glass" style="padding: 1.5rem; margin-block-start: 1.5rem; max-inline-size: 42rem" action={mailto} method="get">
+    <h2>Skriv til os</h2>
+    <p class="muted">Formularen åbner din e-mail med beskeden. Intet sendes til en server.</p>
+    <label>
+      Navn
+      <input type="text" name="name" autocomplete="name" required />
+    </label>
+    <label>
+      Emne
+      <input type="text" name="subject" required />
+    </label>
+    <label>
+      Besked
+      <textarea name="body" required></textarea>
+    </label>
+    <button class="btn btn--primary" type="submit">Åbn e-mail</button>
+  </form>
+</Base>

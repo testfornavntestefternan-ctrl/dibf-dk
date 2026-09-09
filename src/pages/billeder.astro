@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import { gallery } from '../data/site';
+---
+
+<Base title="Billeder" description="Billeder og kort over den muslimske gravplads i Brøndby." currentPath="/billeder">
+  <header class="page-hero">
+    <p class="kicker">Galleri</p>
+    <h1>Billeder</h1>
+    <p class="lede">Kort og fotos fra gravpladsen. Klik for at se i større format.</p>
+  </header>
+
+  <div class="gallery" data-gallery>
+    {
+      gallery.map((item) => (
+        <a href={item.src}>
+          <img src={item.src} alt={item.alt} width="800" height="600" loading="lazy" />
+        </a>
+      ))
+    }
+  </div>
+
+  <dialog class="lightbox" data-lightbox>
+    <img alt="" />
+  </dialog>
+</Base>

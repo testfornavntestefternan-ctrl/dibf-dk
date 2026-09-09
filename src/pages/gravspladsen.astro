@@ -1,0 +1,99 @@
+---
+import Base from '../layouts/Base.astro';
+import { contact } from '../data/site';
+---
+
+<Base title="Gravpladsen" description="Ordensregler, dua, FAQ og praktisk information om den muslimske gravplads i Brøndby." currentPath="/gravspladsen">
+  <header class="page-hero">
+    <p class="kicker">Besøg og regler</p>
+    <h1>Gravpladsen</h1>
+    <p class="lede">Ordensregler, bøn ved indgang og svar på de mest stillede spørgsmål.</p>
+  </header>
+
+  <div class="split">
+    <article class="prose stack">
+      <section class="glass" style="padding: 1.5rem" id="regler">
+        <h2>Ordensregler for besøgende</h2>
+        <ul>
+          <li>Fredning: voksen og børn 30 år, foster 5 år.</li>
+          <li>Gravsten: max. 40 × 58 cm (højde × bredde) for voksen, 30 × 30 cm for barn. Sættes af gravstedsejers stenhugger.</li>
+          <li>Kantsten sættes af gravpladsen efter mindst 2 år.</li>
+          <li>Planter i små potter eller blomsterbakker må stå på graven. Store planter og træer må ikke plantes.</li>
+          <li>Ingen billeder, stearinlys, mad, drikkevarer, bamser eller lignende på graven.</li>
+          <li>Vedligeholdelse af den enkelte grav er gravstedsejers ansvar. Gravpladsen vedligeholder kun fællesarealer.</li>
+          <li>Der må ikke bygges ovenpå graven — hverken huse, rum, vægge eller forhøjninger.</li>
+          <li>Ingen gravearbejde, bænke eller genstande uden for gravens kanter.</li>
+          <li>Gravstedet skal holdes rent og velholdt.</li>
+          <li>Ingen unødig lang opholdstid, lejr, stearinlys, møder eller salat ved gravstederne.</li>
+          <li>Besøgende skal vise anstændighed og respekt over for gravpladsen, de begravede og pårørende.</li>
+          <li>Hyl, skrig og lignende hører ikke hjemme her.</li>
+          <li>Opfør dig diskret, vær ordentligt tildækket, og undgå at mængde jer sammen.</li>
+          <li>Alle er velkomne, men bland jer ikke i andres sager — især ikke under en aktiv begravelse.</li>
+        </ul>
+        <p class="muted">Overtrædelser kan medføre, at genstande fjernes, eller at der foretages ændringer på graveejers regning.</p>
+      </section>
+
+      <section class="glass" style="padding: 1.5rem" id="dua">
+        <h2>Bøn (dua’) før indgang</h2>
+        <p>Det var profeten Muhammads (Allahs fred og velsignelse være med ham) sædvane at bede denne dua’ ved gravpladser:</p>
+        <blockquote class="quote">
+          “Assalamu Alaikum Ya Ahlad Diyar Minal Mu’mineena Wal Muslimeen Wa Inna Insha allahu Bikum Laahiqun, Nas’alullaha Lana Wa Lakumul ‘Afiyah’”
+        </blockquote>
+        <p>
+          “Fred med jer, oh indbyggere på gravpladsen, troende og muslimer! Må Allah vise barmhjertighed mod dem, der er taget forud for os, og som kommer efter os; sandelig vil vi, om Gud vil, følge jer. Vi beder Allah om vores og jeres tryghed.”
+        </p>
+      </section>
+
+      <section class="glass" style="padding: 1.5rem" id="janazah">
+        <h2>Forløb fra Salat-ul Janazah</h2>
+        <p>
+          Efter Salat-ul Janazah i moskéen kører bedemanden kisten til begravelsespladsen. Imamen vil sammen med pårørende, familie, venner og bekendte begrave den afdøde og lave dua. Derefter kan pårørende blive og tage imod kondolencer.
+        </p>
+        <p class="muted">Gravpladsen kan fjerne genstande, der er lagt på graven ud over det tilladte, og tager ikke ansvar for fjernede genstande.</p>
+      </section>
+
+      <section class="stack" id="faq">
+        <h2>Spørgsmål og svar</h2>
+        <details class="glass" style="padding: 1.1rem 1.3rem">
+          <summary><strong>Hvordan ordner jeg selv en begravelse?</strong></summary>
+          <p>Lægen skriver dødsattest. Derefter anmoder du om begravelse via borger.dk. Sognet kan først godkende, når dato og tid er fastsat. Bestil gravpladsen hos os på {contact.phone} senest kl. 12:00 hverdagen før. Du må selv transportere afdøde, eller en bedemand kan gøre det. Begravelseshjælp søges på borger.dk.</p>
+        </details>
+        <details class="glass" style="padding: 1.1rem 1.3rem">
+          <summary><strong>Hvem driver gravpladsen?</strong></summary>
+          <p>Den ejes og administreres af Dansk Islamisk Begravelsesfond. Driftslederen har ansvaret for gravkastning, renholdelse, vedligeholdelse, nye anlæg og administration. Spørgsmål til driften: <a href={`mailto:${contact.emails.drift}`}>{contact.emails.drift}</a>.</p>
+        </details>
+        <details class="glass" style="padding: 1.1rem 1.3rem">
+          <summary><strong>Hvad må man anbringe på graven?</strong></summary>
+          <p>Gravsten og placering skal godkendes. Sten, der skæmmer pladsen, eller upassende indskrifter kan kræves fjernet. Ingen bamser, statuer, fyrfadslys eller store planter. Blomster, som uvedkommende fjerner, er ikke bestyrelsens ansvar.</p>
+        </details>
+        <details class="glass" style="padding: 1.1rem 1.3rem">
+          <summary><strong>Hvad betaler jeg for?</strong></summary>
+          <p>Prisen dækker gravning, fredning i 30 år (5 år for foster) og renholdelse af fællesarealer. Fredning kan forlænges senere. Se også <a href="/for-bedemaend">priser for bedemænd</a>.</p>
+        </details>
+        <details class="glass" style="padding: 1.1rem 1.3rem">
+          <summary><strong>Hvem lægger kantsten og gravsten?</strong></summary>
+          <p>Gravpladsen sætter kantsten efter mindst 2 år. Gravstedsejeren sætter gravstenen via stenhugger. Gravstenen skal være en liggesten med hævet bagkant, max. 40 × 60 cm, anbragt nedlagt i græs i gravens midterlinje.</p>
+        </details>
+        <details class="glass" style="padding: 1.1rem 1.3rem">
+          <summary><strong>Hvordan bliver jeg medlem af DIBS?</strong></summary>
+          <p>Udfyld og underskriv indmeldelsesblanketten hos <a href="https://mitdibf.dk/" rel="noreferrer">Dansk Islamisk Begravelsesfonds støtteforening</a>.</p>
+        </details>
+        <details class="glass" style="padding: 1.1rem 1.3rem">
+          <summary><strong>Kan jeg være medejer af gravpladsen?</strong></summary>
+          <p>Nej. Kun foreninger kan være medejere via medlemskab i fonden. Gravpladsen er en fond i islamisk forstand og kan ikke sælges eller bruges til andet formål.</p>
+        </details>
+      </section>
+    </article>
+
+    <aside class="stack">
+      <nav class="toc" aria-label="Indhold">
+        <h2>Indhold</h2>
+        <a href="#regler">Ordensregler</a>
+        <a href="#dua">Dua’ ved indgang</a>
+        <a href="#janazah">Salat-ul Janazah</a>
+        <a href="#faq">Spørgsmål og svar</a>
+      </nav>
+      <img class="glass" src="/images/kort.png" alt="Kort over gravpladsen" width="1024" height="434" />
+    </aside>
+  </div>
+</Base>

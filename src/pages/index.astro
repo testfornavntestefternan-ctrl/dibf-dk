@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+import { contact, graves, site } from '../data/site';
+---
+
+<Base title={site.name} currentPath="/">
+  <section class="hero reveal">
+    <div class="stack">
+      <p class="kicker">Dansk Islamisk Begravelsesfond</p>
+      <h1>Et sted for værdighed, ro og fællesskab.</h1>
+      <p class="lede">{site.tagline}</p>
+      <div class="cta-row">
+        <a class="btn btn--primary" href="/gravspladsen">Om gravpladsen</a>
+        <a class="btn btn--ghost" href="/kontakt">Kontakt os</a>
+      </div>
+    </div>
+    <figure class="hero-panel">
+      <img src="/images/port.jpg" alt="Indgangen til den muslimske gravplads i Brøndby" width="1200" height="900" />
+      <figcaption class="hero-panel__meta">
+        <strong>Brøndbyøstervej 180</strong>
+        <p class="muted">Danmarks første muslimske gravplads uden tilknytning til en kristen kirkegård. Indviet 22. september 2006.</p>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="facts reveal" aria-label="Nøgletal">
+    <div class="fact">
+      <strong>50.000 m²</strong>
+      <span class="muted">Samlet areal i den grønne kile ved Brøndby</span>
+    </div>
+    <div class="fact">
+      <strong>6–8.000</strong>
+      <span class="muted">Grave — kapacitet årtier frem</span>
+    </div>
+    <div class="fact">
+      <strong>08–12</strong>
+      <span class="muted">Kontor mandag til fredag · {contact.phone}</span>
+    </div>
+  </section>
+
+  <section class="stack-lg" style="margin-block-start: 3.5rem">
+    <div class="section-head">
+      <p class="kicker">Grave</p>
+      <h2>Tre gravtyper. Én gravplads.</h2>
+      <p class="muted prose">Vælg gravtypen for priser, fredning og regler. Indholdet er det samme som på den gamle side — nu i et layout, vi kan bygge videre på.</p>
+    </div>
+    <div class="grave-grid">
+      {
+        graves.map((grave) => (
+          <a class="grave-card" href={grave.href} data-accent={grave.accent} data-tilt>
+            <div class="grave-card__media">
+              <img src={grave.image} alt="" width="800" height="600" />
+            </div>
+            <div class="grave-card__body">
+              <p class="grave-card__kicker">{grave.kicker}</p>
+              <h3>{grave.title}</h3>
+              <p>{grave.excerpt}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Base>

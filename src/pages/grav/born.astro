@@ -1,0 +1,44 @@
+---
+import Base from '../../layouts/Base.astro';
+import RelatedGraves from '../../components/RelatedGraves.astro';
+---
+
+<Base title="Børn grav" description="Børnegrav på DIBF-gravpladsen: max. 1 m, 30 års fredning og tilpassede stenmål." currentPath="/grav/born">
+  <header class="page-hero">
+    <p class="kicker">Fredning 30 år</p>
+    <h1>Børn grav</h1>
+    <p class="lede">Børnegrave (max. 1 m lange) med samme fredning som voksengrave, men egne priser og stenmål.</p>
+  </header>
+
+  <article class="split">
+    <div class="stack">
+      <img class="glass" src="/images/born.jpg" alt="Børnegrav på gravpladsen" width="1280" height="960" />
+      <div class="prose glass" style="padding: 1.5rem">
+        <p>
+          En børnegrav gælder kister på højst 1 meter. Fredningen er 30 år. Samlet pris i 2024 er 12.750 kr. inkl. moms og dækker gravsted, gravning og dækning, administration samt kantsten efter mindst to år.
+        </p>
+        <p>
+          Gravsten: max. 30 × 30 cm. Trækantsten koster 500 kr. Weekend- og helligdagstillæg er 2.000 kr.
+        </p>
+        <p>
+          Familien og bedemanden aftaler Salat-ul Janazah i moskeen. Gravpladsen sørger for gravning og gravsted. Se <a href="/gravsted-ejer">hvad gravstedsejeren skal gøre</a> ved et dødsfald.
+        </p>
+      </div>
+    </div>
+    <aside class="stack">
+      <div class="toc">
+        <h2>Nøgletal</h2>
+        <p>Længde: max. 1 m</p>
+        <p>Fredning: 30 år</p>
+        <p>Samlet pris: 12.750 kr.</p>
+        <p>Gravsten: max. 30 × 30 cm</p>
+      </div>
+      <a class="btn btn--primary" href="/for-bedemaend">Se fuld prisliste</a>
+    </aside>
+  </article>
+
+  <section style="margin-block-start: 3rem">
+    <h2 class="section-head">Andre gravtyper</h2>
+    <RelatedGraves exclude="born" />
+  </section>
+</Base>

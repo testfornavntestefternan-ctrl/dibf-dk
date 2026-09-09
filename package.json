@@ -1,0 +1,18 @@
+{
+  "name": "dibf-dk",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev --port 3355 --host",
+    "build": "astro build",
+    "preview": "astro preview --port 3355 --host",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^7.3.2"
+  }
+}
