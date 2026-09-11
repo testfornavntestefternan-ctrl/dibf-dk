@@ -1,11 +1,17 @@
 import { applyI18n } from './i18n';
 
-export function initTheme() {
-  const root = document.documentElement;
-  const stored = localStorage.getItem('dibs-theme') || localStorage.getItem('dibf-theme');
-  const theme = stored === 'dark' ? 'dark' : 'light';
-  root.dataset.theme = theme;
+const THEME_KEY = 'dibs-appearance';
+
+function applyTheme(theme: 'light' | 'dark') {
+  document.documentElement.dataset.theme = theme;
+  const color = document.querySelector('meta[name="theme-color"]');
+  if (color) color.setAttribute('content', theme === 'dark' ? '#071422' : '#f4ead8');
   syncToggle(theme);
+}
+
+export function initTheme() {
+  const stored = localStorage.getItem(THEME_KEY);
+  applyTheme(stored === 'dark' ? 'dark' : 'light');
 }
 
 function syncToggle(theme: string) {
@@ -16,9 +22,8 @@ function syncToggle(theme: string) {
 
 export function toggleTheme() {
   const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-  document.documentElement.dataset.theme = next;
-  localStorage.setItem('dibs-theme', next);
-  syncToggle(next);
+  localStorage.setItem(THEME_KEY, next);
+  applyTheme(next);
   applyI18n();
 }
 

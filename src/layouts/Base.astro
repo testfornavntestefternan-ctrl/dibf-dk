@@ -32,7 +32,7 @@ const cornerBl = withBase('/images/patterns/corner-bl.svg');
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#011a2d" />
+    <meta name="theme-color" content="#f4ead8" />
     <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -45,8 +45,11 @@ const cornerBl = withBase('/images/patterns/corner-bl.svg');
     <script is:inline>
       (function () {
         try {
-          var stored = localStorage.getItem('dibs-theme') || localStorage.getItem('dibf-theme');
-          document.documentElement.dataset.theme = stored === 'dark' ? 'dark' : 'light';
+          var stored = localStorage.getItem('dibs-appearance');
+          var theme = stored === 'dark' ? 'dark' : 'light';
+          document.documentElement.dataset.theme = theme;
+          var color = document.querySelector('meta[name="theme-color"]');
+          if (color) color.setAttribute('content', theme === 'dark' ? '#071422' : '#f4ead8');
         } catch (e) {
           document.documentElement.dataset.theme = 'light';
         }

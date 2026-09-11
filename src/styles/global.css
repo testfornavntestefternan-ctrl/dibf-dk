@@ -1237,8 +1237,7 @@
   }
 
   .apply-form {
-    max-width: 44rem;
-    margin-inline: auto;
+    width: 100%;
   }
 
   .apply-form abbr {
