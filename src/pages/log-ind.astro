@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Ornament from '../components/Ornament.astro';
+import { withBase } from '../data/site';
+---
+
+<Base
+  title="Log ind"
+  description="Log ind som DIBS-medlem — eksempel uden database. Se en sample-profil for husstanden."
+  currentPath="/log-ind"
+>
+  <header class="page-hero">
+    <p class="kicker" data-i18n="login.kicker">Medlem</p>
+    <h1 data-i18n="login.title">Log ind</h1>
+    <Ornament />
+    <p class="lede" data-i18n="login.lede">
+      Eksempel uden database. Udfyld hvad som helst — eller spring direkte til sample-profilen — for at se, hvordan en
+      indlogget medlemside kan se ud.
+    </p>
+  </header>
+
+  <form class="cms-login glass" data-member-login data-next={withBase('/profil/')}>
+    <label>
+      <span data-i18n="login.email">E-mail</span>
+      <input type="email" name="email" autocomplete="username" value="fatima.hassan@example.com" required />
+    </label>
+    <label>
+      <span data-i18n="login.pass">Adgangskode</span>
+      <input type="password" name="password" autocomplete="current-password" value="eksempel" required />
+    </label>
+    <p class="muted" data-i18n="login.hint">
+      Intet tjekkes, og intet gemmes på en server. Login huskes kun i denne fane, så headeren kan skifte til «Min profil».
+    </p>
+    <button class="btn btn--gold" type="submit">
+      <Icon name="login" size={18} />
+      <span data-i18n="login.submit">Log ind</span>
+    </button>
+    <a class="btn btn--ghost" href={withBase('/profil')} data-member-skip>
+      <span data-i18n="login.skip">Fortsæt til eksempelprofil</span>
+    </a>
+  </form>
+</Base>

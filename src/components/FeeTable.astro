@@ -1,0 +1,44 @@
+---
+import Icon from './Icon.astro';
+import { feeBands, kr } from '../data/site';
+---
+
+<div class="fee-layout">
+  <div class="fee-table-wrap">
+    <table class="fee-table">
+      <caption class="kicker" data-i18n="home.feeTitle">Indmeldelsesgebyr pr. familiemedlem</caption>
+      <thead>
+        <tr>
+          <th>Alder</th>
+          <th>Gebyr</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          feeBands.map((band) => (
+            <tr>
+              <td>{band.label}</td>
+              <td>{kr(band.amount)}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <div class="fee-calc glass" data-fee-calc>
+    <div class="icon-badge"><Icon name="coin" /></div>
+    <h3 data-i18n="calc.title">Beregn husstandens gebyr</h3>
+    <p class="muted" data-i18n="calc.lede">Tilføj alder for hvert familiemedlem. Beløbene er indmeldelsesgebyret for 2023.</p>
+    <form data-fee-form>
+      <label>
+        <span data-i18n="calc.age">Alder</span>
+        <input type="number" name="age" min="0" max="120" required />
+      </label>
+      <button class="btn btn--ghost" type="submit" data-i18n="calc.add">Tilføj</button>
+    </form>
+    <ul class="fee-people" data-fee-list role="list"></ul>
+    <p class="fee-total"><span data-i18n="calc.total">I alt</span> <strong data-fee-total>0 kr.</strong></p>
+    <p class="muted" data-i18n="home.feeNote">Medlemmet er først aktivt ét år efter betalt indmeldelsesgebyr.</p>
+  </div>
+</div>

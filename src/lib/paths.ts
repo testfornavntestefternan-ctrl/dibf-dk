@@ -1,6 +1,6 @@
-export type Locale = 'da' | 'en' | 'ar';
+export type Locale = 'da' | 'en';
 
-export const locales: Locale[] = ['da', 'en', 'ar'];
+export const locales: Locale[] = ['da', 'en'];
 
 /** Prefix a site path with Astro's base so GitHub Pages (`/dibf-dk/`) and localhost both work. */
 export function withBase(path: string): string {

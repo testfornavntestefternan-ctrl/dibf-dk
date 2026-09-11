@@ -22,7 +22,7 @@ function readStore(): CmsData {
     return {
       news: parsed.news ?? [],
       images: parsed.images ?? [],
-      texts: parsed.texts ?? { da: {}, en: {}, ar: {} },
+      texts: parsed.texts ?? { da: {}, en: {} },
     };
   } catch {
     return emptyCms();
@@ -57,12 +57,11 @@ function fillLocalized(value: string, locale: Locale): Localized {
   all[locale] = value;
   if (!all.da) all.da = value;
   if (!all.en) all.en = value;
-  if (!all.ar) all.ar = value;
   return all;
 }
 
 function pick(localized: Localized, locale: Locale) {
-  return localized[locale] || localized.da || localized.en || localized.ar || '';
+  return localized[locale] || localized.da || localized.en || '';
 }
 
 export function applyCmsContent() {
@@ -126,7 +125,7 @@ async function handleLogin(form: HTMLFormElement) {
     return;
   }
   setSession({ username: 'Admin', role: 'editor' });
-  const next = form.dataset.next || `${import.meta.env.BASE_URL}bestyrelse/`;
+  const next = form.dataset.next || `${import.meta.env.BASE_URL}admin/`;
   window.location.href = next;
 }
 
@@ -287,7 +286,7 @@ function bindDash() {
 export function initCms() {
   const login = document.querySelector<HTMLFormElement>('[data-cms-login]');
   if (login && getSession()) {
-    window.location.href = login.dataset.next || `${import.meta.env.BASE_URL}bestyrelse/`;
+    window.location.href = login.dataset.next || `${import.meta.env.BASE_URL}admin/`;
     return;
   }
   if (login && login.dataset.ready !== '1') {

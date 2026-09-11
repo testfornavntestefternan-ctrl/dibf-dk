@@ -8,6 +8,6 @@ export function t(locale: Locale, key: string): string {
   return messages[locale][key] ?? messages.da[key] ?? key;
 }
 
-export function dir(locale: Locale): 'ltr' | 'rtl' {
-  return locale === 'ar' ? 'rtl' : 'ltr';
+export function dir(_locale: Locale): 'ltr' | 'rtl' {
+  return 'ltr';
 }

@@ -1,0 +1,111 @@
+---
+import { withBase } from '../data/site';
+
+interface Props {
+  mode: 'join' | 'add';
+}
+
+const { mode } = Astro.props;
+const parent = mode === 'add';
+---
+
+<form
+  class="contact-form glass apply-form"
+  data-apply-form
+  data-apply-kind={mode}
+  data-next={withBase('/betaling/')}
+>
+  <div class="apply-fields">
+    <label class="apply-field">
+      <span>
+        <span data-i18n={parent ? 'apply.parentFirst' : 'apply.firstName'}>{parent ? 'Far/mor Fornavn' : 'Fornavn'}</span>
+        <abbr title="påkrævet">*</abbr>
+      </span>
+      <input type="text" name="FirstName" autocomplete="given-name" required />
+    </label>
+    <label class="apply-field">
+      <span>
+        <span data-i18n={parent ? 'apply.parentLast' : 'apply.lastName'}>{parent ? 'Far/mor Efternavn' : 'Efternavn'}</span>
+        <abbr title="påkrævet">*</abbr>
+      </span>
+      <input type="text" name="SurName" autocomplete="family-name" required />
+    </label>
+    <label class="apply-field">
+      <span>
+        <span data-i18n={parent ? 'apply.parentCpr' : 'apply.cpr'}>{parent ? 'Far/mor CPR' : 'CPR'}</span>
+        <abbr title="påkrævet">*</abbr>
+      </span>
+      <input type="text" name="BirthDate" inputmode="numeric" autocomplete="off" required />
+    </label>
+    <label class="apply-field">
+      <span>
+        <span data-i18n="apply.email">Email</span>
+        <abbr title="påkrævet">*</abbr>
+      </span>
+      <input type="email" name="Email" autocomplete="email" required />
+    </label>
+    <label class="apply-field">
+      <span>
+        <span data-i18n="apply.mobile">Mobil</span>
+        <abbr title="påkrævet">*</abbr>
+      </span>
+      <input type="tel" name="MobileNumber" autocomplete="tel" required />
+    </label>
+    <label class="apply-field">
+      <span>
+        <span data-i18n="apply.zip">Postnummer</span>
+        <abbr title="påkrævet">*</abbr>
+      </span>
+      <input type="text" name="ZipCode" inputmode="numeric" autocomplete="postal-code" required />
+    </label>
+    <label class="apply-field">
+      <span>
+        <span data-i18n="apply.street">Gade navn, nummer, etage/side</span>
+        <abbr title="påkrævet">*</abbr>
+      </span>
+      <input type="text" name="Street" autocomplete="street-address" required />
+    </label>
+    <label class="apply-field">
+      <span data-i18n="apply.note">Besked</span>
+      <textarea name="Note" maxlength="128" rows="3"></textarea>
+    </label>
+  </div>
+
+  <h2 data-i18n="apply.family">Ægtefælle og Børn</h2>
+  <div class="family-stack" data-people>
+    <table class="family-table" data-person>
+      <tbody>
+        <tr>
+          <th scope="row" data-i18n="apply.firstName">Fornavn</th>
+          <td><input type="text" name="childFirstName" autocomplete="off" /></td>
+          <td class="family-table__action" rowspan="3">
+            <button class="family-delete" type="button" data-remove-person data-i18n="apply.delete">Slet</button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row" data-i18n="apply.lastName">Efternavn</th>
+          <td><input type="text" name="childSurName" autocomplete="off" /></td>
+        </tr>
+        <tr>
+          <th scope="row" data-i18n="apply.cpr">CPR</th>
+          <td><input type="text" name="childCpr" inputmode="numeric" autocomplete="off" /></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button class="btn btn--ghost" type="button" data-add-person>
+    <span data-i18n="apply.addMore">tilføje flere</span>
+  </button>
+
+  <p>
+    <span data-i18n="apply.termsIntro">Læs venligst </span>
+    <a href={withBase('/medlemskab')} data-i18n="apply.termsLink">DIBS betingelserne for optagelse og samtykke</a>.
+  </p>
+  <label class="check-row">
+    <input type="checkbox" name="TermsAndConditions" required />
+    <span data-i18n="apply.terms">Jeg bekræfter hermed at jeg har læst og accepteret betingelserne for DIBS.</span>
+  </label>
+  <button class="btn btn--gold" type="submit">
+    <span data-i18n="apply.next">Næste</span>
+  </button>
+</form>

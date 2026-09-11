@@ -1,0 +1,89 @@
+---
+import Base from '../layouts/Base.astro';
+import Ornament from '../components/Ornament.astro';
+import { withBase } from '../data/site';
+
+const sampleRows = [
+  { name: 'Fatima Hassan', cpr: '010184-xxxx', price: '4.500 kr.', note: 'Indmeldelsesgebyr, 42 år' },
+  { name: 'Yusuf Hassan', cpr: '150381-xxxx', price: '4.500 kr.', note: 'Indmeldelsesgebyr, 45 år' },
+  { name: 'Amina Hassan', cpr: '220314-xxxx', price: '1.500 kr.', note: 'Indmeldelsesgebyr, 12 år' },
+  { name: 'Omar Hassan', cpr: '080319-xxxx', price: '1.000 kr.', note: 'Indmeldelsesgebyr, 7 år' },
+];
+---
+
+<Base
+  title="Betalingsoversigt"
+  description="Eksempel på DIBS-betalingsoversigt — navn, CPR, pris og beskrivelse, uden database."
+  currentPath="/betaling"
+>
+  <section class="notice" style="margin-block-end: 1.4rem">
+    <p class="kicker" data-i18n="apply.sampleKicker">Eksempel — ingen database</p>
+    <p data-i18n="pay.sampleLead">
+      Siden matcher «Betaling Oversigt» på mitdibf.dk efter «Næste». Tabellen viser navn, CPR-nummer, pris og
+      beskrivelse. «Send ansøgning» gemmer ingenting.
+    </p>
+  </section>
+
+  <header class="page-hero">
+    <p class="kicker">DIBS</p>
+    <h1 data-i18n="pay.title">Betaling Oversigt.</h1>
+    <Ornament />
+    <p class="lede" data-i18n="pay.lede">Gebyret følger alderen i CPR. Årligt kontingent på mindst 150 kr. kommer senere.</p>
+  </header>
+
+  <form class="contact-form glass" data-pay-form>
+    <div class="fee-table-wrap">
+      <table class="fee-table">
+        <thead>
+          <tr>
+            <th data-i18n="pay.colName">Navn</th>
+            <th data-i18n="pay.colCpr">CPR nummer</th>
+            <th data-i18n="pay.colPrice">Pris</th>
+            <th data-i18n="pay.colNote">Beskrivelse</th>
+          </tr>
+        </thead>
+        <tbody data-pay-body>
+          {
+            sampleRows.map((row) => (
+              <tr>
+                <td>{row.name}</td>
+                <td>{row.cpr}</td>
+                <td>{row.price}</td>
+                <td>{row.note}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="2" data-i18n="pay.total">I alt</th>
+            <th data-pay-total>11.500 kr.</th>
+            <th></th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="contact-form__row">
+      <label>
+        <span data-i18n="pay.email">E-mail :</span>
+        <input type="email" name="Email" data-pay-email autocomplete="email" />
+      </label>
+      <label>
+        <span data-i18n="pay.mobile">Mobil :</span>
+        <input type="tel" name="MobileNumber" data-pay-mobile autocomplete="tel" />
+      </label>
+    </div>
+
+    <p class="muted" hidden data-pay-done data-i18n="pay.done">
+      Ansøgningen er et eksempel og er ikke sendt. I den færdige løsning ville DIBS modtage husstanden og oprette
+      Betalingsservice.
+    </p>
+
+    <div class="cta-row" style="margin-top: 0.4rem">
+      <button class="btn btn--gold" type="submit" data-i18n="pay.send">Send ansøgning</button>
+      <a class="btn btn--ghost" href={withBase('/ansogning')} data-pay-edit data-i18n="pay.edit">Rediger</a>
+      <a class="btn btn--navy" href={withBase('/')} data-i18n="pay.cancel">Annuller</a>
+    </div>
+  </form>
+</Base>

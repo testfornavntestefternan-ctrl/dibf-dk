@@ -10,22 +10,34 @@ interface Props {
 }
 
 const { title, description = site.description, currentPath } = Astro.props;
-const pageTitle = title === site.name ? `${site.fullName}` : `${title} – ${site.name}`;
+const pageTitle = title === site.name ? site.fullName : `${title} – ${site.name}`;
+const girih = withBase('/images/patterns/girih-bg.svg');
+const zellij = withBase('/images/patterns/zellij.jpg');
+const headerPattern = withBase('/images/patterns/header-arch.svg');
+const frame = withBase('/images/patterns/frame.svg');
+const cornerTl = withBase('/images/patterns/corner-tl.svg');
+const cornerTr = withBase('/images/patterns/corner-tr.svg');
+const cornerBr = withBase('/images/patterns/corner-br.svg');
+const cornerBl = withBase('/images/patterns/corner-bl.svg');
 ---
 
 <!doctype html>
-<html lang={site.lang}>
+<html
+  lang={site.lang}
+  dir="ltr"
+  data-theme="light"
+  style={`--pattern: url('${girih}'); --pattern-zellij: url('${zellij}'); --pattern-header: url('${headerPattern}'); --pattern-frame: url('${frame}'); --pattern-corner-tl: url('${cornerTl}'); --pattern-corner-tr: url('${cornerTr}'); --pattern-corner-br: url('${cornerBr}'); --pattern-corner-bl: url('${cornerBl}');`}
+>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#0a0e1a" />
-    <meta name="view-transition" content="same-origin" />
-    <link rel="icon" href={withBase('/images/favicon.png')} type="image/png" />
+    <meta name="theme-color" content="#011a2d" />
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:opsz,wght@14..32,400..700&family=Noto+Naskh+Arabic:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:ital,wght@0,400..700;1,400..700&display=swap"
       rel="stylesheet"
     />
     <title>{pageTitle}</title>
@@ -33,16 +45,17 @@ const pageTitle = title === site.name ? `${site.fullName}` : `${title} – ${sit
     <script is:inline>
       (function () {
         try {
-          var stored = localStorage.getItem('dibf-theme');
-          document.documentElement.dataset.theme = stored || 'dark';
+          var stored = localStorage.getItem('dibs-theme') || localStorage.getItem('dibf-theme');
+          document.documentElement.dataset.theme = stored === 'dark' ? 'dark' : 'light';
         } catch (e) {
-          document.documentElement.dataset.theme = 'dark';
+          document.documentElement.dataset.theme = 'light';
         }
         try {
-          var loc = localStorage.getItem('dibf-locale');
-          if (loc === 'en' || loc === 'ar' || loc === 'da') {
+          var loc = localStorage.getItem('dibs-locale') || localStorage.getItem('dibf-locale');
+          if (loc === 'ar') loc = 'da';
+          if (loc === 'en' || loc === 'da') {
             document.documentElement.lang = loc;
-            document.documentElement.dir = loc === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.dir = 'ltr';
             document.documentElement.dataset.locale = loc;
           }
         } catch (e) {}
@@ -51,20 +64,15 @@ const pageTitle = title === site.name ? `${site.fullName}` : `${title} – ${sit
   </head>
   <body>
     <a class="skip-link" href="#content" data-i18n="nav.skip">Spring til indhold</a>
-    <div class="aurora" aria-hidden="true">
-      <div class="aurora__blob aurora__blob--a"></div>
-      <div class="aurora__blob aurora__blob--b"></div>
-      <div class="aurora__blob aurora__blob--c"></div>
-    </div>
-    <canvas class="stars" id="starfield" aria-hidden="true"></canvas>
+    <div class="light-veil" aria-hidden="true"></div>
 
     <header class="site-header">
       <div class="wrap site-header__inner">
         <a class="brand" href={withBase('/')} data-astro-prefetch>
-          <img src={withBase('/images/logo-badge.png')} alt="DIBF-logo" width="48" height="48" />
+          <img src={withBase('/images/logo.svg')} alt="DIBS" width="44" height="44" />
           <span class="brand__text">
             <span class="brand__name">{site.name}</span>
-            <span class="brand__sub" data-i18n="brand.sub">Gravplads Brøndby</span>
+            <span class="brand__sub" data-i18n="brand.sub">Støtteforeningen</span>
           </span>
         </a>
 
@@ -84,14 +92,28 @@ const pageTitle = title === site.name ? `${site.fullName}` : `${title} – ${sit
         </nav>
 
         <div class="header-actions">
+          <a
+            class="btn btn--gold header-login"
+            href={withBase('/log-ind')}
+            data-member-gate
+            data-login-href={withBase('/log-ind')}
+            data-profile-href={withBase('/profil')}
+            data-i18n="nav.login"
+            aria-current={currentPath === '/log-ind' || currentPath === '/profil' ? 'page' : undefined}
+          >
+            Log ind
+          </a>
           <div class="lang-switch" role="group" data-i18n-aria="nav.lang" aria-label="Sprog">
             <button type="button" data-locale="da">DA</button>
             <button type="button" data-locale="en">EN</button>
-            <button type="button" data-locale="ar">AR</button>
           </div>
-          <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false" data-i18n-aria="theme.toLight" aria-label="Skift tema">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 3a9 9 0 1 0 9 9c0-.5-.04-1-.12-1.48A7 7 0 0 1 12 3Z" stroke="currentColor" stroke-width="1.7" />
+          <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false" data-i18n-aria="theme.toDark" aria-label="Skift til mørkt tema">
+            <svg class="theme-icon theme-icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M14.6 4.4A8.2 8.2 0 1 0 14.6 19.6 6.6 6.6 0 1 1 14.6 4.4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+            </svg>
+            <svg class="theme-icon theme-icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6" />
+              <path d="M12 3.2v2.1M12 18.7v2.1M3.2 12h2.1M18.7 12h2.1M6.05 6.05l1.5 1.5M16.45 16.45l1.5 1.5M17.95 6.05l-1.5 1.5M7.55 16.45l-1.5 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
             </svg>
           </button>
           <button
@@ -110,6 +132,16 @@ const pageTitle = title === site.name ? `${site.fullName}` : `${title} – ${sit
         </div>
       </div>
       <div class="wrap drawer" id="mobile-nav" data-drawer data-open="false">
+        <a
+          href={withBase('/log-ind')}
+          data-member-gate
+          data-login-href={withBase('/log-ind')}
+          data-profile-href={withBase('/profil')}
+          data-i18n="nav.login"
+          aria-current={currentPath === '/log-ind' || currentPath === '/profil' ? 'page' : undefined}
+        >
+          Log ind
+        </a>
         {
           nav.map((item) => (
             <a href={withBase(item.href)} aria-current={currentPath === item.href ? 'page' : undefined} data-i18n={item.i18n}>
@@ -127,46 +159,51 @@ const pageTitle = title === site.name ? `${site.fullName}` : `${title} – ${sit
     <footer class="site-footer">
       <div class="wrap site-footer__grid">
         <div>
-          <h2 data-i18n="footer.address">Adresse</h2>
+          <h2 data-i18n="footer.about">{site.name}</h2>
           <p>
+            {site.fullName}<br />
             {contact.address[0]}<br />
             {contact.address[1]}<br />
-            <a href={contact.phoneHref}>{contact.phone}</a>
+            CVR {contact.cvr}
           </p>
         </div>
         <div>
           <h2 data-i18n="footer.contact">Kontakt</h2>
           <p>
-            <a href={`mailto:${contact.emails.bestyrelse}`}>{contact.emails.bestyrelse}</a><br />
-            <a href={`mailto:${contact.emails.drift}`}>{contact.emails.drift}</a><br />
-            CVR {contact.cvr}
+            <a href={`mailto:${contact.emails.medlem}`}>{contact.emails.medlem}</a><br />
+            <a href={`mailto:${contact.emails.info}`}>{contact.emails.info}</a><br />
+            <a href={`mailto:${contact.emails.finans}`}>{contact.emails.finans}</a>
           </p>
         </div>
         <div>
-          <h2 data-i18n="footer.hours">Åbningstider</h2>
+          <h2 data-i18n="footer.member">Medlem</h2>
           <p>
-            <span data-i18n="footer.office">Kontor</span>: {contact.hours}<br />
-            {site.fullName}
+            <a href={withBase('/bliv-medlem')} data-i18n="home.ctaJoin">Bliv medlem</a><br />
+            <a href={withBase('/medlemskab')} data-i18n="nav.terms">Medlemskab</a><br />
+            <a href={withBase('/kontakt')} data-i18n="nav.contact">Kontakt</a>
           </p>
         </div>
       </div>
       <div class="wrap legal">
         <span>© {new Date().getFullYear()} {site.fullName}</span>
-        <a href={withBase('/om-os')} data-i18n="footer.about">Om fonden</a>
+        <span>mitdibf.dk</span>
       </div>
     </footer>
 
     <a class="icon-btn to-top" href="#content" data-to-top data-i18n-aria="footer.top" aria-label="Til toppen">↑</a>
 
     <script>
-      import { boot, initLightbox } from '../scripts/ui';
+      import { boot } from '../scripts/ui';
       import { initI18n } from '../scripts/i18n';
       import { initCms } from '../scripts/cms';
+      import { initFeeCalc } from '../scripts/fees';
+      import { initMemberDemo } from '../scripts/member-demo';
       const start = () => {
         boot();
+        initMemberDemo();
         initI18n();
         initCms();
-        initLightbox();
+        initFeeCalc();
       };
       start();
       document.addEventListener('astro:page-load', start);

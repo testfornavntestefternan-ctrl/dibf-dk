@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Ornament from '../components/Ornament.astro';
+import { docs } from '../data/site';
+---
+
+<Base title="Vedtægter" description="Vedtægter for Dansk Islamisk Begravelsesfondens Støtteforening." currentPath="/vedtaegter">
+  <header class="page-hero">
+    <p class="kicker">DIBS</p>
+    <h1 data-i18n="statutes.title">Vedtægter</h1>
+    <Ornament />
+    <p class="lede" data-i18n="statutes.lede">De gældende vedtægter for DIBS.</p>
+    <a class="btn btn--primary" href={docs.statutes}>
+      <Icon name="pdf" size={18} />
+      <span data-i18n="statutes.open">Åbn vedtægterne (PDF)</span>
+    </a>
+  </header>
+
+  <article class="cover-card">
+    <span class="icon-badge"><Icon name="book" /></span>
+    <p>
+      Vedtægterne er den juridiske ramme for støtteforeningen. De beskriver formål, medlemskab, generalforsamling og
+      bestyrelsens ansvar. Åbn PDF-filen for den gældende tekst.
+    </p>
+  </article>
+</Base>

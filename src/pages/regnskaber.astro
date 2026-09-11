@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Ornament from '../components/Ornament.astro';
+import { contact, reports } from '../data/site';
+---
+
+<Base title="Regnskaber" description="Årsrapporter og referater fra DIBS." currentPath="/regnskaber">
+  <header class="page-hero">
+    <p class="kicker">DIBS</p>
+    <h1 data-i18n="finance.title">Regnskaber</h1>
+    <Ornament />
+    <p class="lede" data-i18n="finance.lede">Årsrapporter, referater og indsamlingsregnskaber.</p>
+  </header>
+
+  <div class="doc-grid">
+    {
+      reports.map((item) => (
+        <a class="doc-card" href={item.href}>
+          <span class="icon-badge">
+            <Icon name="pdf" />
+          </span>
+          <p class="kicker">{item.kind} · {item.year}</p>
+          <h2>{item.title}</h2>
+        </a>
+      ))
+    }
+  </div>
+
+  <section class="notice" style="margin-block-start: 1.6rem">
+    <span class="icon-badge"><Icon name="envelope" /></span>
+    <p data-i18n="finance.hint">
+      Send din e-mail med familienummer — eller fulde navn og fødselsdato — til medlem@mitdibf.dk.
+    </p>
+    <a href={`mailto:${contact.emails.medlem}`}>{contact.emails.medlem}</a>
+  </section>
+</Base>

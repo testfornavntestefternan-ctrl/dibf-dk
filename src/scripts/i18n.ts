@@ -2,12 +2,13 @@ import { messages } from '../i18n/messages';
 import type { Locale } from '../lib/paths';
 import { locales } from '../lib/paths';
 
-const LOCALE_KEY = 'dibf-locale';
+const LOCALE_KEY = 'dibs-locale';
 
 export function getLocale(): Locale {
   try {
-    const stored = localStorage.getItem(LOCALE_KEY);
-    if (stored === 'da' || stored === 'en' || stored === 'ar') return stored;
+    const stored = localStorage.getItem(LOCALE_KEY) || localStorage.getItem('dibf-locale');
+    if (stored === 'en') return 'en';
+    if (stored === 'da' || stored === 'ar') return 'da';
   } catch {
     /* ignore */
   }
@@ -23,7 +24,7 @@ export function setLocale(locale: Locale) {
 export function applyI18n(locale: Locale = getLocale()) {
   const root = document.documentElement;
   root.lang = locale;
-  root.dir = locale === 'ar' ? 'rtl' : 'ltr';
+  root.dir = 'ltr';
   root.dataset.locale = locale;
 
   const dict = messages[locale];
@@ -51,7 +52,7 @@ export function applyI18n(locale: Locale = getLocale()) {
   document.querySelectorAll<HTMLButtonElement>('[data-locale]').forEach((btn) => {
     btn.setAttribute('aria-pressed', String(btn.dataset.locale === locale));
   });
-  const theme = root.dataset.theme === 'light' ? 'light' : 'dark';
+  const theme = root.dataset.theme === 'dark' ? 'dark' : 'light';
   const themeKey = theme === 'light' ? 'theme.toDark' : 'theme.toLight';
   document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach((btn) => {
     const value = text(themeKey);
@@ -66,7 +67,7 @@ export function initI18n() {
     btn.dataset.ready = '1';
     btn.addEventListener('click', () => {
       const next = btn.dataset.locale;
-      if (next === 'da' || next === 'en' || next === 'ar') setLocale(next);
+      if (next === 'da' || next === 'en') setLocale(next);
     });
   });
 }

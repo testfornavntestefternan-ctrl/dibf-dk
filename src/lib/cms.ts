@@ -28,15 +28,15 @@ export type CmsSession = {
   role: CmsRole;
 };
 
-export const CMS_STORAGE_KEY = 'dibf-cms-v1';
-export const CMS_SESSION_KEY = 'dibf-cms-session';
+export const CMS_STORAGE_KEY = 'dibs-cms-v1';
+export const CMS_SESSION_KEY = 'dibs-cms-session';
 
-export const emptyLocalized = (): Localized => ({ da: '', en: '', ar: '' });
+export const emptyLocalized = (): Localized => ({ da: '', en: '' });
 
 export const emptyCms = (): CmsData => ({
   news: [],
   images: [],
-  texts: { da: {}, en: {}, ar: {} },
+  texts: { da: {}, en: {} },
 });
 
 /** Default admin account — username Admin, password Asmaaallah99 */

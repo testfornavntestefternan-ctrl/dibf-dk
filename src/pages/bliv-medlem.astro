@@ -1,0 +1,68 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Ornament from '../components/Ornament.astro';
+import FeeTable from '../components/FeeTable.astro';
+import { withBase } from '../data/site';
+---
+
+<Base
+  title="Bliv medlem"
+  description="Sådan bliver du medlem af DIBS — gebyr, karenstid og ansøgning."
+  currentPath="/bliv-medlem"
+>
+  <header class="page-hero">
+    <p class="kicker">DIBS</p>
+    <h1 data-i18n="join.title">Bliv medlem</h1>
+    <Ornament />
+    <p class="lede" data-i18n="join.lede">
+      Her kan du se gebyr og karenstid. Ansøgningen udfyldes på næste side — fornavn, efternavn, CPR, email, mobil og
+      adresse.
+    </p>
+  </header>
+
+  <div class="path-grid" style="margin-block-end: 2rem">
+    <article class="path-card">
+      <span class="icon-badge"><Icon name="book" /></span>
+      <h2 data-i18n="join.step1">Læs betingelserne</h2>
+      <p>Muslim og bosiddende i Danmark. Ingen dødelig sygdom ved indmeldelse. Dækning efter ét år.</p>
+      <a href={withBase('/medlemskab')} data-i18n="home.ctaTerms">Se betingelser</a>
+    </article>
+    <article class="path-card">
+      <span class="icon-badge"><Icon name="family" /></span>
+      <h2 data-i18n="join.step2">Udfyld husstanden</h2>
+      <p data-i18n="join.ready">Hav fornavn, efternavn, CPR, e-mail, mobil, adresse og eventuelle børn klar.</p>
+    </article>
+    <article class="path-card">
+      <span class="icon-badge"><Icon name="shield" /></span>
+      <h2 data-i18n="join.step3">Send ansøgningen</h2>
+      <p>Du ser gebyret pr. person, accepterer betingelserne og sender ansøgningen.</p>
+    </article>
+  </div>
+
+  <div class="cta-row" style="margin-block-end: 2.4rem">
+    <a class="btn btn--primary" href={withBase('/ansogning')}>
+      <Icon name="crescent" size={20} />
+      <span data-i18n="join.open">Udfyld ansøgningen</span>
+    </a>
+  </div>
+
+  <section class="notice" style="margin-block-end: 2rem">
+    <h2 data-i18n="join.children">Allerede medlem?</h2>
+    <p data-i18n="join.childrenLede">
+      Log ind på din profil. Tilføjelse af børn og ægtefælle sker der — den funktion behøver ikke en knap på forsiden.
+    </p>
+    <div class="cta-row" style="margin-top: 0.8rem">
+      <a class="btn btn--gold" href={withBase('/log-ind')}>
+        <Icon name="login" size={18} />
+        <span data-i18n="join.childrenOpen">Log ind</span>
+      </a>
+      <a class="btn btn--ghost" href={withBase('/tilfoej')}>
+        <Icon name="child" size={18} />
+        <span data-i18n="join.addOpen">Tilføj børn eller ægtefælle</span>
+      </a>
+    </div>
+  </section>
+
+  <FeeTable />
+</Base>

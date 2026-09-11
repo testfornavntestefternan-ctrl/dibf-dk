@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <g fill="none" stroke="#c9a24a" stroke-width="1.25" stroke-linejoin="round" stroke-linecap="round" transform="rotate(90 32 32)">
+    
+  <path d="M5 59 V5 H59" stroke-width="1.8"/>
+  <path d="M5 48 V12 H16" stroke-width="1.15"/>
+  <g transform="translate(30 30)">
+    
+    <polygon points="18.00,0.00 0.00,18.00 -18.00,0.00 -0.00,-18.00"/>
+    <polygon points="12.73,12.73 -12.73,12.73 -12.73,-12.73 12.73,-12.73"/>
+    <polygon points="11.97,4.96 4.96,11.97 -4.96,11.97 -11.97,4.96 -11.97,-4.96 -4.96,-11.97 4.96,-11.97 11.97,-4.96"/>
+    <polygon points="7.56,0.00 0.00,7.56 -7.56,0.00 -0.00,-7.56"/>
+    <polygon points="5.35,5.35 -5.35,5.35 -5.35,-5.35 5.35,-5.35"/>
+    <polygon points="3.66,1.52 1.52,3.66 -1.52,3.66 -3.66,1.52 -3.66,-1.52 -1.52,-3.66 1.52,-3.66 3.66,-1.52"/>
+  </g>
+
+  </g>
+</svg>

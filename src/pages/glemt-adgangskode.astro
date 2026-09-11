@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import Ornament from '../components/Ornament.astro';
+import { withBase } from '../data/site';
+---
+
+<Base
+  title="Glemt adgangskode"
+  description="Eksempel på glemt adgangskode hos DIBS — kun email, uden database."
+  currentPath="/glemt-adgangskode"
+>
+  <section class="notice" style="margin-block-end: 1.4rem">
+    <p class="kicker" data-i18n="apply.sampleKicker">Eksempel — ingen database</p>
+    <p data-i18n="forgot.sampleLead">
+      Live-siden har ét felt: Email. Knappen hedder «Email Link». Her sendes intet — der vises bare, at leddet findes.
+    </p>
+  </section>
+
+  <header class="page-hero">
+    <p class="kicker" data-i18n="login.kicker">Medlem</p>
+    <h1 data-i18n="forgot.title">Glemt din adgangskode?</h1>
+    <Ornament />
+    <p class="lede" data-i18n="forgot.lede">Skriv din email.</p>
+  </header>
+
+  <form class="cms-login glass" data-forgot-form>
+    <label>
+      <span data-i18n="apply.email">Email</span>
+      <input type="email" name="Email" autocomplete="email" required />
+    </label>
+    <p class="muted" hidden data-forgot-done data-i18n="forgot.done">
+      I den færdige løsning ville der blive sendt et link. Her gemmes intet.
+    </p>
+    <button class="btn btn--gold" type="submit" data-i18n="forgot.submit">Email Link</button>
+    <a class="btn btn--ghost" href={withBase('/log-ind')} data-i18n="forgot.back">Tilbage til log ind</a>
+  </form>
+</Base>

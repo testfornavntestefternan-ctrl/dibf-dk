@@ -1,0 +1,205 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Ornament from '../components/Ornament.astro';
+import { contact, withBase } from '../data/site';
+
+const household = [
+  { name: 'Fatima Hassan', roleKey: 'profile.rolePrimary', role: 'Hovedmedlem', age: '42', statusKey: 'profile.statusCovered', status: 'Dækket' },
+  { name: 'Yusuf Hassan', roleKey: 'profile.roleSpouse', role: 'Ægtefælle', age: '45', statusKey: 'profile.statusCovered', status: 'Dækket' },
+  { name: 'Amina Hassan', roleKey: 'profile.roleChild', role: 'Barn', age: '12', statusKey: 'profile.statusCovered', status: 'Dækket' },
+  { name: 'Omar Hassan', roleKey: 'profile.roleChild', role: 'Barn', age: '7', statusKey: 'profile.statusWaiting', status: 'Karenstid til 12. mar. 2027' },
+];
+
+const ideas = [
+  { icon: 'home' as const, titleKey: 'profile.idea1Title', title: 'Kontakt og adresse', textKey: 'profile.idea1Text', text: 'Ret adresse, telefon og e-mail her. Pligten til at holde oplysninger ajour flyttes ind på profilen i stedet for kun en advarsel på forsiden.' },
+  { icon: 'coin' as const, titleKey: 'profile.idea2Title', title: 'Kontingent og Betalingsservice', textKey: 'profile.idea2Text', text: 'Se om årets 150 kr. er betalt, tilmeld Betalingsservice, og hent kvittering. Rykker og restance vises pr. person i husstanden.' },
+  { icon: 'document' as const, titleKey: 'profile.idea3Title', title: 'Dokumenter', textKey: 'profile.idea3Text', text: 'Indmeldelsesbekræftelse, familienummer og eventuelle breve fra foreningen — samlet ét sted.' },
+  { icon: 'lantern' as const, titleKey: 'profile.idea4Title', title: 'Ved dødsfald', textKey: 'profile.idea4Text', text: 'Kort vejledning og knap til at skrive til medlem@mitdibf.dk. Dækning vises kun, hvis karenstiden er udløbet.' },
+  { icon: 'family' as const, titleKey: 'profile.idea5Title', title: 'Skilsmisse og opsigelse', textKey: 'profile.idea5Text', text: 'Flyt ægtefælle ud af husstanden, eller opsig enkeltpersoner, uden at det er en offentlig knap på forsiden.' },
+  { icon: 'shield' as const, titleKey: 'profile.idea6Title', title: 'Dækning pr. person', textKey: 'profile.idea6Text', text: '30.000 kr. og karenstid vises for hvert medlem. Et nytilføjet barn får sin egen ventetid — det er grunden til, at tilføjelse hører hjemme her.' },
+];
+---
+
+<Base
+  title="Min profil"
+  description="Eksempel på en DIBS-medlemsprofil — husstand, dækning og tilføjelse af børn eller ægtefælle."
+  currentPath="/profil"
+>
+  <section class="notice reveal" style="margin-block-end: 1.4rem">
+    <p class="kicker" data-i18n="profile.sampleKicker">Eksempel — ingen database</p>
+    <h2 data-i18n="profile.sampleTitle">Sådan kan en medlemsprofil se ud</h2>
+    <p data-i18n="profile.sampleLead">
+      Knappen «Tilføj børn» kan udgå fra forsiden. Tilføjelse af flere børn eller ægtefæller hører til her, når man er
+      logget ind — som en funktion på medlemsprofilen, ikke som et offentligt kald på forsiden.
+    </p>
+    <p data-i18n="profile.sampleBody">
+      Navnene nedenfor er opdigtede. En rigtig profil ville vise husstanden med dækningsstatus, lade medlemmet tilføje
+      barn eller ægtefælle, rette kontaktoplysninger og se kontingent. Se forslagene længere nede.
+    </p>
+  </section>
+
+  <header class="page-hero">
+    <p class="kicker" data-i18n="profile.kicker">Husstand Hassan</p>
+    <h1 data-i18n="profile.title">Velkommen, Fatima</h1>
+    <Ornament />
+    <p class="lede" data-i18n="profile.lede">Familienummer DIBS-41827 · indmeldt 2019 · kontingent 2026 betalt</p>
+    <div class="cta-row">
+      <a class="btn btn--ghost" href={`mailto:${contact.emails.medlem}`}>
+        <Icon name="envelope" size={18} />
+        <span data-i18n="profile.write">Skriv til medlem@mitdibf.dk</span>
+      </a>
+      <a class="btn btn--navy" href={withBase('/')} data-member-logout data-next={withBase('/')}>
+        <Icon name="login" size={18} />
+        <span data-i18n="nav.logout">Log ud</span>
+      </a>
+    </div>
+  </header>
+
+  <section class="facts reveal" aria-label="Status" style="margin-bottom: 2rem">
+    <div class="fact">
+      <div class="icon-badge"><Icon name="shield" /></div>
+      <strong data-i18n="profile.statActive">Aktiv</strong>
+      <span class="muted" data-i18n="profile.statActiveHint">Medlemskab bekræftet</span>
+    </div>
+    <div class="fact">
+      <div class="icon-badge"><Icon name="coin" /></div>
+      <strong>30.000 kr.</strong>
+      <span class="muted" data-i18n="home.statCover">Maksimal dækning</span>
+    </div>
+    <div class="fact">
+      <div class="icon-badge"><Icon name="clock" /></div>
+      <strong data-i18n="profile.statWaitDone">Udløbet</strong>
+      <span class="muted" data-i18n="profile.statWaitHint">Karenstid for hovedmedlem</span>
+    </div>
+  </section>
+
+  <div class="profile-layout">
+    <section class="stack">
+      <div class="section-head">
+        <p class="kicker" data-i18n="profile.houseKicker">Husstand</p>
+        <h2 data-i18n="profile.houseTitle">Hvem er dækket</h2>
+        <p class="lede" data-i18n="profile.houseLede">
+          Hvert familiemedlem har egen status. Omar er tilføjet senere og venter stadig på, at karenstiden udløber.
+        </p>
+      </div>
+      <div class="fee-table-wrap">
+        <table class="fee-table">
+          <thead>
+            <tr>
+              <th data-i18n="profile.colName">Navn</th>
+              <th data-i18n="profile.colRole">Rolle</th>
+              <th data-i18n="profile.colAge">Alder</th>
+              <th data-i18n="profile.colStatus">Dækning</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              household.map((person) => (
+                <tr>
+                  <td>{person.name}</td>
+                  <td data-i18n={person.roleKey}>{person.role}</td>
+                  <td>{person.age}</td>
+                  <td>
+                    <span class:list={['pill', person.statusKey === 'profile.statusWaiting' && 'pill--wait']}>
+                      <span data-i18n={person.statusKey}>{person.status}</span>
+                    </span>
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <form class="contact-form glass" data-member-add>
+      <span class="icon-badge"><Icon name="child" /></span>
+      <h2 data-i18n="profile.addTitle">Tilføj barn eller ægtefælle</h2>
+      <p class="muted" data-i18n="profile.addLede">
+        Her bor funktionen, som ellers lå som «Tilføj børn» på forsiden. Gebyr følger alder, og den nye person får sin
+        egen karenstid på ét år.
+      </p>
+      <label>
+        <span data-i18n="profile.relation">Relation</span>
+        <select name="relation">
+          <option value="child" data-i18n="profile.roleChild">Barn</option>
+          <option value="spouse" data-i18n="profile.roleSpouse">Ægtefælle</option>
+        </select>
+      </label>
+      <div class="contact-form__row">
+        <label>
+          <span data-i18n="profile.firstName">Fornavn</span>
+          <input type="text" name="firstName" autocomplete="given-name" />
+        </label>
+        <label>
+          <span data-i18n="profile.lastName">Efternavn</span>
+          <input type="text" name="lastName" autocomplete="family-name" value="Hassan" />
+        </label>
+      </div>
+      <label>
+        <span data-i18n="profile.born">Fødselsdato</span>
+        <input type="date" name="born" />
+      </label>
+      <p class="muted" hidden data-member-add-note data-i18n="profile.addNote">
+        I den færdige løsning ville personen blive lagt i husstanden efter gebyr og bekræftelse. Her er det kun et
+        eksempel — intet gemmes.
+      </p>
+      <button class="btn btn--gold" type="submit">
+        <Icon name="child" size={18} />
+        <span data-i18n="profile.addSubmit">Tilføj til husstanden</span>
+      </button>
+      <a class="btn btn--ghost" href={withBase('/tilfoej')}>
+        <span data-i18n="join.addOpen">Tilføj børn eller ægtefælle</span>
+      </a>
+    </form>
+  </div>
+
+  <section class="contact-form glass" style="margin-block: 2rem">
+    <span class="icon-badge"><Icon name="home" /></span>
+    <h2 data-i18n="profile.contactTitle">Kontaktoplysninger</h2>
+    <p class="muted" data-i18n="profile.contactLede">
+      Det er jeres ansvar at holde adressen ajour. På en rigtig profil rettes det her — så forsiden kun behøver en kort
+      påmindelse.
+    </p>
+    <div class="contact-form__row">
+      <label>
+        <span data-i18n="contact.address">Adresse</span>
+        <input type="text" value="Eksempelvej 12, 2605 Brøndby" readonly />
+      </label>
+      <label>
+        <span data-i18n="profile.phone">Telefon</span>
+        <input type="tel" value="12 34 56 78" readonly />
+      </label>
+    </div>
+    <label>
+      <span data-i18n="login.email">E-mail</span>
+      <input type="email" value="fatima.hassan@example.com" readonly />
+    </label>
+    <p class="muted" data-i18n="profile.contactHint">Felterne er låst i eksemplet. En rigtig profil ville have «Gem ændringer».</p>
+  </section>
+
+  <section class="stack-lg">
+    <div class="section-head">
+      <p class="kicker" data-i18n="profile.ideasKicker">Forslag</p>
+      <h2 data-i18n="profile.ideasTitle">Hvad profilen også kan rumme</h2>
+      <p class="lede" data-i18n="profile.ideasLede">
+        Alt det, et medlem i dag skal maile om, kan samles bag login — så forsiden bliver til foreningen, og profilen
+        bliver til husstanden.
+      </p>
+    </div>
+    <div class="cover-grid profile-ideas">
+      {
+        ideas.map((item) => (
+          <article class="cover-card">
+            <span class="icon-badge">
+              <Icon name={item.icon} />
+            </span>
+            <h3 data-i18n={item.titleKey}>{item.title}</h3>
+            <p data-i18n={item.textKey}>{item.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</Base>

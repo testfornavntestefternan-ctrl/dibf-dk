@@ -1,70 +1,157 @@
 ---
 import Base from '../layouts/Base.astro';
-import { contact, paths, site, withBase } from '../data/site';
+import Icon from '../components/Icon.astro';
+import Ornament from '../components/Ornament.astro';
+import FeeTable from '../components/FeeTable.astro';
+import { agm, contact, docs, purposes, site, withBase } from '../data/site';
+
+const paths = [
+  { href: withBase('/bliv-medlem'), icon: 'family', titleKey: 'path.join.title', textKey: 'path.join.text', title: 'Bliv medlem', text: 'Indmeld husstanden. Gebyret afhænger af alder, og dækning begynder efter ét år.' },
+  { href: withBase('/medlemskab'), icon: 'book', titleKey: 'path.terms.title', textKey: 'path.terms.text', title: 'Medlemskab', text: 'Karenstid, dækning og hvad husstanden skal holde ajour.' },
+  { href: `mailto:${contact.emails.medlem}`, icon: 'lantern', titleKey: 'path.death.title', textKey: 'path.death.text', title: 'Ved dødsfald', text: 'Skriv til medlem@mitdibf.dk. Dækning er op til 30.000 kr. efter karenstiden.' },
+  { href: withBase('/regnskaber'), icon: 'document', titleKey: 'path.docs.title', textKey: 'path.docs.text', title: 'Dokumenter', text: 'Vedtægter, årsrapporter og referater — åbne for alle.' },
+] as const;
 ---
 
 <Base title={site.name} currentPath="/">
-  <section class="hero reveal">
+  <section class="hero hero-frame reveal">
     <div class="stack">
-      <p class="kicker" data-i18n="home.kicker">Dansk Islamisk Begravelsesfond</p>
-      <h1 data-i18n="home.heroTitle">Et sted for værdighed, ro og fællesskab.</h1>
+      <p class="kicker" data-i18n="home.kicker">{site.fullName}</p>
+      <h1 data-i18n="home.heroTitle">Vi bærer byrden sammen, når en familie mister en af deres.</h1>
+      <Ornament />
       <p class="lede" data-i18n="home.tagline">{site.tagline}</p>
       <div class="cta-row">
-        <a class="btn btn--primary" href={withBase('/ved-dodsfald')} data-i18n="home.ctaDeath">Ved dødsfald</a>
-        <a class="btn btn--ghost" href={withBase('/kontakt')} data-i18n="home.ctaContact">Kontakt os</a>
+        <a class="btn btn--primary" href={withBase('/bliv-medlem')}>
+          <Icon name="family" size={20} />
+          <span data-i18n="home.ctaJoin">Bliv medlem</span>
+        </a>
+        <a class="btn btn--ghost" href={withBase('/medlemskab')}>
+          <Icon name="book" size={20} />
+          <span data-i18n="home.ctaTerms">Se betingelser</span>
+        </a>
       </div>
     </div>
-    <a class="hero-panel" href={withBase('/gravspladsen')} data-astro-prefetch>
-      <img src={withBase('/images/port.jpg')} alt="Indgangen til den muslimske gravplads i Brøndby" width="1200" height="900" data-i18n-alt="home.heroAlt" />
-      <span class="hero-panel__meta">
-        <span class="kicker" data-i18n="path.visit.kicker">Besøg</span>
-        <strong data-i18n="home.heroPlace">Brøndbyøstervej 180</strong>
-        <span data-i18n="home.heroCaption">Danmarks første muslimske gravplads uden tilknytning til en kristen kirkegård. Indviet 22. september 2006.</span>
-        <span class="hero-panel__cta" data-i18n="home.heroCta">Se gravpladsen</span>
-      </span>
-    </a>
-  </section>
-
-  <section class="facts reveal" data-i18n-aria="home.factsLabel" aria-label="Nøgletal">
-    <div class="fact">
-      <strong>50.000 m²</strong>
-      <span class="muted" data-i18n="home.factArea">Samlet areal i den grønne kile ved Brøndby</span>
-    </div>
-    <div class="fact">
-      <strong>6–8.000</strong>
-      <span class="muted" data-i18n="home.factGraves">Grave — kapacitet årtier frem</span>
-    </div>
-    <div class="fact">
-      <strong>08–12</strong>
-      <span class="muted" data-i18n="home.factHours">Kontor mandag til fredag</span>
+    <div class="hero__art mihrab-art" aria-hidden="true">
+      <img src={withBase('/images/patterns/mihrab.svg')} alt="" width="320" height="420" />
     </div>
   </section>
 
-  <section class="stack-lg" style="margin-block-start: 3.5rem">
+  <section class="facts reveal" aria-label="Nøgletal">
+    <div class="fact">
+      <div class="icon-badge"><Icon name="shield" /></div>
+      <strong>30.000 kr.</strong>
+      <span class="muted" data-i18n="home.statCover">Maksimal dækning</span>
+    </div>
+    <div class="fact">
+      <div class="icon-badge"><Icon name="clock" /></div>
+      <strong data-i18n="home.statWaitValue">1 år</strong>
+      <span class="muted" data-i18n="home.statWait">Karenstid</span>
+    </div>
+    <div class="fact">
+      <div class="icon-badge"><Icon name="coin" /></div>
+      <strong>150 kr.</strong>
+      <span class="muted" data-i18n="home.statMin">Årligt mindst</span>
+    </div>
+  </section>
+
+  <section class="stack-lg" style="margin-block-end: 2.8rem">
     <div class="section-head">
-      <p class="kicker" data-i18n="home.newsKicker">Nyt</p>
-      <h2 data-i18n="home.newsTitle">Nyheder</h2>
-    </div>
-    <div class="news-grid" data-cms-news>
-      <p class="muted" data-cms-news-empty data-i18n="home.newsEmpty">Der er ingen nyheder endnu.</p>
-    </div>
-  </section>
-
-  <section class="stack-lg" style="margin-block-start: 3.5rem">
-    <div class="section-head">
-      <p class="kicker" data-i18n="home.findKicker">Find videre</p>
-      <h2 data-i18n="home.findTitle">Hvad skal du?</h2>
+      <p class="kicker" data-i18n="home.pathsKicker">Vælg vej</p>
+      <h2 data-i18n="home.pathsTitle">Hvad skal du?</h2>
     </div>
     <div class="path-grid">
       {
         paths.map((item) => (
-          <a class="path-card" href={item.href} data-accent={item.accent} data-tilt>
-            <p class="grave-card__kicker" data-i18n={`${item.i18n}.kicker`}>{item.kicker}</p>
-            <h3 data-i18n={`${item.i18n}.title`}>{item.title}</h3>
-            <p data-i18n={`${item.i18n}.text`}>{item.text}</p>
+          <a class="path-card" href={item.href}>
+            <span class="icon-badge">
+              <Icon name={item.icon} />
+            </span>
+            <h3 data-i18n={item.titleKey}>{item.title}</h3>
+            <p data-i18n={item.textKey}>{item.text}</p>
           </a>
         ))
       }
+    </div>
+  </section>
+
+  <section class="notice reveal" style="margin-block-end: 1.2rem">
+    <p class="kicker" data-i18n="home.noticeTitle">{agm.title}</p>
+    <p data-i18n="home.noticeLead">{agm.when} · {agm.where}</p>
+    <a class="btn btn--ghost" href={docs.agm}>
+      <Icon name="pdf" size={18} />
+      <span data-i18n="home.noticePdf">Åbn indkaldelsen (PDF)</span>
+    </a>
+  </section>
+
+  <section class="alert reveal" style="margin-block-end: 2.8rem">
+    <strong data-i18n="home.alertTitle">Hold jeres oplysninger ajour</strong>
+    <p data-i18n="home.alertBody">
+      Alle i husstanden skal skrive til medlem@mitdibf.dk ved adresseændring, nyt telefonnummer, skilsmisse, dødsfald,
+      opsigelse eller andre ændringer. Manglende opdatering kan ophæve medlemskabet. Det er jeres ansvar at sikre, at
+      kontingentet er betalt.
+    </p>
+  </section>
+
+  <section class="stack-lg" style="margin-block-end: 2.8rem">
+    <div class="section-head">
+      <p class="kicker" data-i18n="home.coverKicker">Dækning</p>
+      <h2 data-i18n="home.coverTitle">Hvad medlemskabet dækker</h2>
+      <p class="lede" data-i18n="home.coverLead">
+        Op til 30.000 kr. til kiste og begravelse — også ved dødsfald uden for Danmark, dog ikke over dansk normalpris.
+      </p>
+    </div>
+    <div class="cover-grid">
+      <article class="cover-card">
+        <span class="icon-badge"><Icon name="mosque" /></span>
+        <h3 data-i18n="cover.body">Begravelse af hele kroppen samt kropsdele, for eksempel en amputeret arm.</h3>
+      </article>
+      <article class="cover-card">
+        <span class="icon-badge"><Icon name="clock" /></span>
+        <h3 data-i18n="cover.wait">Medlemmet er først aktivt ét år efter betalt indmeldelsesgebyr og bekræftelse.</h3>
+      </article>
+      <article class="cover-card">
+        <span class="icon-badge"><Icon name="lantern" /></span>
+        <h3 data-i18n="cover.not">
+          Foster eller nyfødt betragtes ikke som medlem — heller ikke hvis forældrene er medlemmer. Bestyrelsesbeslutning,
+          januar 2025.
+        </h3>
+      </article>
+    </div>
+  </section>
+
+  <section class="stack-lg" style="margin-block-end: 2.8rem">
+    <div class="section-head">
+      <p class="kicker" data-i18n="home.purposeKicker">Formål</p>
+      <h2 data-i18n="home.purposeTitle">Hvorfor DIBS findes</h2>
+    </div>
+    <ol class="purpose-list">
+      {
+        purposes.map((item) => (
+          <li>
+            <Icon name="crescent" />
+            <span>{item}</span>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="stack-lg" style="margin-block-end: 2.8rem">
+    <div class="section-head">
+      <p class="kicker" data-i18n="home.feeKicker">2023</p>
+      <h2 data-i18n="home.feeTitle">Indmeldelsesgebyr pr. familiemedlem</h2>
+      <p class="lede" data-i18n="home.minFee">Årligt kontingent er mindst 150 kr. pr. medlem og betales senest 1. februar.</p>
+    </div>
+    <FeeTable />
+  </section>
+
+  <section class="stack-lg">
+    <div class="section-head">
+      <p class="kicker" data-i18n="home.newsKicker">Nyt</p>
+      <h2 data-i18n="home.newsTitle">Meddelelser</h2>
+    </div>
+    <div class="news-grid" data-cms-news>
+      <p class="muted" data-cms-news-empty data-i18n="home.newsEmpty">Der er ingen meddelelser endnu.</p>
     </div>
   </section>
 </Base>

@@ -1,167 +1,103 @@
-/** Shared site content — edit this file to update copy, nav, and contact. */
-
 import { withBase } from '../lib/paths';
 
 export { withBase } from '../lib/paths';
 
 export const site = {
-  name: 'DIBF',
-  fullName: 'Dansk Islamisk Begravelsesfond',
-  tagline: 'Den første muslimske gravplads i Danmark — et sted for værdighed, ro og fællesskab.',
+  name: 'DIBS',
+  shortName: 'Mit DIBS',
+  fullName: 'Dansk Islamisk Begravelsesfondens Støtteforening',
+  tagline: 'Økonomisk og åndelig støtte, når en muslimsk familie mister en af deres.',
   description:
-    'Dansk Islamisk Begravelsesfond ejer og driver den muslimske gravplads i Brøndby. Her finder du vejledning til pårørende, bedemænd og gravstedsejere.',
-  url: 'https://dibf.dk',
+    'DIBS er støtteforeningen, der hjælper medlemmer med begravelsesudgifter op til 30.000 kr. og støtter islamiske gravpladser i Danmark.',
+  url: 'https://mitdibf.dk',
   lang: 'da',
 };
 
 export const contact = {
   address: ['Brøndbyøstervej 180', '2605 Brøndby'],
-  phone: '+45 42 42 51 44',
-  phoneHref: 'tel:+4542425144',
-  hours: 'Mandag – fredag 08:00–12:00',
+  cvr: '29598827',
+  web: 'www.mitdibf.dk',
   emails: {
-    drift: 'drift@dibf.dk',
-    bestyrelse: 'bestyrelse@dibf.dk',
-    forslag: 'forslag-klager@dibf.dk',
-    bestilling: 'bestilling@dibf.dk',
+    medlem: 'medlem@mitdibf.dk',
+    info: 'info@mitdibf.dk',
+    finans: 'finans@mitdibf.dk',
+    bestyrelse: 'Bestyrelse@mitdibf.dk',
   },
-  cvr: '28492235',
-  web: 'www.dibf.dk',
 };
 
 export const nav = [
-  { href: '/om-os', label: 'Om os', i18n: 'nav.about' },
-  { href: '/gravspladsen', label: 'Gravpladsen', i18n: 'nav.cemetery' },
-  { href: '/ved-dodsfald', label: 'Ved dødsfald', i18n: 'nav.death' },
-  { href: '/for-bedemaend', label: 'For bedemænd', i18n: 'nav.undertaker' },
+  { href: '/', label: 'Mit DIBS', i18n: 'nav.home' },
+  { href: '/medlemskab', label: 'Medlemskab', i18n: 'nav.terms' },
+  { href: '/bestyrelse', label: 'Bestyrelse', i18n: 'nav.board' },
+  { href: '/vedtaegter', label: 'Vedtægter', i18n: 'nav.statutes' },
+  { href: '/regnskaber', label: 'Regnskaber', i18n: 'nav.finance' },
   { href: '/kontakt', label: 'Kontakt', i18n: 'nav.contact' },
 ];
 
-export const paths = [
-  {
-    href: withBase('/ved-dodsfald'),
-    kicker: 'Pårørende',
-    title: 'Ved dødsfald',
-    text: 'Hvad I skal gøre, gravtyper, priser og DIBS-medlemskab.',
-    accent: 'amber',
-    i18n: 'path.family',
-  },
-  {
-    href: withBase('/gravspladsen'),
-    kicker: 'Besøg',
-    title: 'Gravpladsen',
-    text: 'Ordensregler, dua, kort og billeder fra Brøndby.',
-    accent: 'teal',
-    i18n: 'path.visit',
-  },
-  {
-    href: withBase('/for-bedemaend'),
-    kicker: 'Professionelle',
-    title: 'For bedemænd',
-    text: 'Bestilling, prisliste og ansvarsfordeling.',
-    accent: 'aurora',
-    i18n: 'path.pro',
-  },
-] as const;
+export const purposes = [
+  'at støtte oprettelse, indretning og drift af islamiske begravelsespladser i Danmark',
+  'at støtte muslimske formål',
+  'at yde tilskud, der nedbringer omkostningerne ved dødsfald i muslimske familier',
+  'at forestå andre aktiviteter, der har samme formål',
+  'at sikre medlemmer et beløb til hel eller delvis dækning af udgifterne ved begravelse, og derved sikre efterladte mindst mulig økonomisk byrde',
+];
 
-export const graves = [
-  {
-    slug: 'voksne',
-    title: 'Voksengrav',
-    kicker: 'Fredning 30 år',
-    excerpt:
-      'Voksengrav med 30 års fredning. Gravsten, kantsten og vedligeholdelse følger gravpladsens regler.',
-    image: withBase('/images/voksne.jpg'),
-    href: withBase('/ved-dodsfald#voksne'),
-    accent: 'amber',
-    i18n: 'grave.adult',
-  },
-  {
-    slug: 'fostre',
-    title: 'Fostergrav',
-    kicker: 'Fredning 5 år',
-    excerpt:
-      'Et stille sted for de mindste. Fostergrave har 5 års fredning og egne rammer for sten og kant.',
-    image: withBase('/images/fostre.jpg'),
-    href: withBase('/ved-dodsfald#fostre'),
-    accent: 'teal',
-    i18n: 'grave.fetus',
-  },
-  {
-    slug: 'born',
-    title: 'Børnegrav',
-    kicker: 'Fredning 30 år',
-    excerpt:
-      'Børnegrave (max. 1 m) med 30 års fredning og tilpassede mål for gravsten og kantsten.',
-    image: withBase('/images/born.jpg'),
-    href: withBase('/ved-dodsfald#born'),
-    accent: 'aurora',
-    i18n: 'grave.child',
-  },
-] as const;
+export const feeBands = [
+  { min: 0, max: 5, amount: 500, label: '0 – 5' },
+  { min: 6, max: 10, amount: 1000, label: '6 – 10' },
+  { min: 11, max: 15, amount: 1500, label: '11 – 15' },
+  { min: 16, max: 20, amount: 2000, label: '16 – 20' },
+  { min: 21, max: 25, amount: 2500, label: '21 – 25' },
+  { min: 26, max: 30, amount: 3000, label: '26 – 30' },
+  { min: 31, max: 35, amount: 3500, label: '31 – 35' },
+  { min: 36, max: 40, amount: 4000, label: '36 – 40' },
+  { min: 41, max: 45, amount: 4500, label: '41 – 45' },
+  { min: 46, max: 50, amount: 5000, label: '46 – 50' },
+  { min: 51, max: 60, amount: 10000, label: '51 – 60' },
+  { min: 61, max: 70, amount: 20000, label: '61 – 70' },
+  { min: 71, max: 120, amount: 25000, label: 'Over 70' },
+];
 
 export const board = [
-  { name: 'Vedat Aslan', role: 'Formand', roleKey: 'role.formand' },
-  { name: 'Ghulam Mohiuddin', role: 'Næstformand', roleKey: 'role.naestformand' },
-  { name: 'Hamza Moustafa', role: 'Bestyrelsesmedlem', roleKey: 'role.medlem' },
-  { name: 'Ateeque Durani', role: 'Bestyrelsesmedlem', roleKey: 'role.medlem' },
-  { name: 'Muhammad Akhtar', role: 'Bestyrelsesmedlem (sekretær)', roleKey: 'role.sekretaer' },
-  { name: 'Said Mohamed Said', role: 'Suppleant', roleKey: 'role.suppleant' },
-  { name: 'Rafed Naimi', role: 'Suppleant', roleKey: 'role.suppleant' },
-  { name: 'Baha El Said', role: 'Suppleant', roleKey: 'role.suppleant' },
+  { name: 'Atiq Durani', role: 'Bestyrelsesformand', roleKey: 'role.chair' },
+  { name: 'Fahed Jabbar', role: 'Næstformand', roleKey: 'role.vice' },
+  { name: 'Said Jaber', role: 'Bestyrelsesmedlem', roleKey: 'role.member' },
+  { name: 'Nabil El-Awad', role: 'Bestyrelsesmedlem', roleKey: 'role.member' },
+  { name: 'Bassem Hassan', role: 'Bestyrelsesmedlem', roleKey: 'role.member' },
+  { name: 'Yahya Mohamad Mansour', role: 'Suppleant', roleKey: 'role.deputy' },
+  { name: 'Maher Hachach', role: 'Suppleant', roleKey: 'role.deputy' },
 ];
 
-export const founders: { name: string; address: string; cvr?: string; note?: string }[] = [
-  { name: 'Nørrebro Kultur & Aktivitets Center (Al Taiba Moske)', address: 'Titangade 15, 2200 København N', cvr: '34555680' },
-  { name: 'Dansk Islamisk Trossamfund', address: 'Bibliotekvej 6, 2650 Hvidovre', cvr: '31658802' },
-  { name: 'København Islamisk Menighed', address: 'Valdemarsgade 17, 1665 København V', cvr: '32493491' },
-  { name: 'Brøndby Ungdoms og Kultur forening', address: 'Tjørnevangen 7, 2660 Brøndby Strand' },
-  { name: 'Helsingør Ungdoms og Kultur forening', address: 'Sporegangen 5 st. th., 3000 Helsingør' },
-  { name: 'Vejle Islamisk Menighed', address: 'Nørremark Center 2, 7100 Vejle', cvr: '31653029' },
-  { name: 'Århus Islamisk Menighed', address: 'Nørre Allé 34, 1. sal, 8000 Aarhus C', cvr: '31559162' },
-  { name: 'Det Islamiske Trossamfund i Danmark', address: 'Dortheavej 45, 2400 København NV', cvr: '19307646' },
-  { name: 'Center for Skandinavisk Akademisk studier', address: 'Dortheavej 45, 2400 København NV' },
-  { name: 'Den Islamiske Socialrådgivning', address: 'Dortheavej 45, 2400 København NV' },
-  { name: 'Muslimsk ungdom i Danmark (MUNIDA)', address: 'Dortheavej 43, 2400 København NV', cvr: '34628726' },
-  { name: 'Humanistisk Aktiviteters gruppe', address: 'Dortheavej 45, 2400 København NV' },
-  { name: 'Den Islamisk forening', address: 'Sankt Hans Gade 25, 2200 København N', note: 'Ophørt' },
-  { name: 'Den muslimske Spejderforening', address: 'Dortheavej 43, 2400 København NV' },
-  { name: 'Won (Widow, Orphan, Needy)', address: 'P.O. Box 2614, 2100 København Ø' },
-  { name: 'Islamisk Kultur Center', address: 'Horsebakken 2, 2400 København NV', cvr: '31337119' },
-  { name: 'Dansk Islamisk Råd', address: 'Vingelodden 1A, 2200 København N', cvr: '27834655' },
-  { name: 'Minhaj-Ul-Quran International Danmark', address: 'Bispevej 25, 2400 København NV', cvr: '30259963' },
-  { name: 'Immigrant Welfare Society', address: 'Valhøjvej 15, baghus, 2500 Valby' },
-  { name: 'Imam Malik institut', address: 'Gl. Køge Landevej 113, 2500 Valby', cvr: '32921264' },
-  { name: 'Islamisk Cultural Institute', address: 'Torveporten 8, 2500 Valby' },
-  { name: 'Muslim Cultural Institute', address: 'Amerikavej 19, 1756 København V', cvr: '16023191' },
-  { name: 'Somalisk Ungdom – kultur forening', address: 'Nordre Fasanvej 186b, st. th., 2000 Frederiksberg C' },
-  { name: 'Muslimernes Landsorganisation (MLO)', address: 'Blågårdsgade 30, 2200 København N' },
+export const reports = [
+  { year: '2025', kind: 'Årsrapport', title: 'Årsrapport 2025', href: withBase('/docs/DIBSRegnskab2025.pdf') },
+  { year: '2024', kind: 'Årsrapport', title: 'Årsrapport 2024', href: withBase('/docs/DIBSRegnskab2024.pdf') },
+  { year: '2023', kind: 'Årsrapport', title: 'Årsrapport 2023', href: withBase('/docs/DIBSRegnskab2023.pdf') },
+  { year: '2022', kind: 'Årsrapport', title: 'Årsrapport 2022 (udkast)', href: withBase('/docs/udkastRegnskab2022.pdf') },
+  { year: '2022', kind: 'Referat', title: 'Generalforsamling — referat 2022', href: withBase('/docs/Ref2022.pdf') },
+  { year: '2021', kind: 'Årsrapport', title: 'Årsrapport 2021', href: withBase('/docs/Dibsaarsrapport2021.pdf') },
+  { year: '2021', kind: 'Referat', title: 'Generalforsamling — referat 2021', href: withBase('/docs/gf2021.pdf') },
+  { year: '2020', kind: 'Årsrapport', title: 'Årsrapport 2020', href: withBase('/docs/Dibsregnskab2020.pdf') },
+  { year: '2020', kind: 'Referat', title: 'Generalforsamling 2020', href: withBase('/docs/dibsgf2020.pdf') },
+  { year: '2020–21', kind: 'Indsamling', title: 'Indsamlingsregnskab 2020–2021', href: withBase('/docs/INDSAMLINGSREGNSKAB.pdf') },
+  { year: '2020–21', kind: 'Revision', title: 'Revisionserklæring indsamling 2020–21', href: withBase('/docs/Revisionserklaering2020.pdf') },
 ];
 
-export const prices = {
-  year: 2024,
-  rows: [
-    { label: 'Gravsted (fredning: voksen/børn 30 år, foster 5 år)', i18n: 'price.plot', adult: '9.500 kr.', child: '5.500 kr.', fetus: '3.250 kr.' },
-    { label: 'Gravning og dækning', i18n: 'price.digging', adult: '6.800 kr.', child: '2.000 kr.', fetus: '1.500 kr.' },
-    { label: 'Administration, information og vejledning', i18n: 'price.admin', adult: '2.200 kr.', child: '2.000 kr.', fetus: '1.000 kr.' },
-    { label: 'Weekend- og helligdagstillæg', i18n: 'price.weekend', adult: '4.000 kr.', child: '2.000 kr.', fetus: '1.000 kr.' },
-    { label: 'Kantsten (sættes efter mindst 2 år, inkl. moms)', i18n: 'price.curb', adult: '5.750 kr.', child: '2.750 kr.', fetus: '0 kr.' },
-    { label: 'Trækantsten (foreløbig, inkl. moms)', i18n: 'price.wood', adult: '750 kr.', child: '500 kr.', fetus: '0 kr.' },
-    { label: 'I alt at betale (inkl. moms)', i18n: 'price.total', adult: '25.000 kr.', child: '12.750 kr.', fetus: '5.750 kr.' },
-  ],
-  extra: 'Træindramning i graven: 1.000 kr. (inkl. moms).',
+export const docs = {
+  agm: withBase('/docs/DIBSGF2026.pdf'),
+  statutes: withBase('/docs/DIBSVedtaegter2026.pdf'),
 };
 
-export const gallery = [
-  { src: withBase('/images/kort.png'), alt: 'Kort over gravpladsen i Brøndby' },
-  { src: withBase('/images/port.jpg'), alt: 'Indgangen til gravpladsen' },
-  { src: withBase('/images/bgravu2.jpg'), alt: 'Gravpladsen set fra oven' },
-  { src: withBase('/images/b1.jpg'), alt: 'Gravpladsen i Brøndby' },
-  { src: withBase('/images/b2.jpg'), alt: 'Stier og grave' },
-  { src: withBase('/images/b3.jpg'), alt: 'Gravsteder' },
-  { src: withBase('/images/b4.jpg'), alt: 'Gravpladsens område' },
-  { src: withBase('/images/b5.jpg'), alt: 'Udsigt over gravpladsen' },
-  { src: withBase('/images/b6.jpg'), alt: 'Beplantning og grave' },
-  { src: withBase('/images/b7.jpg'), alt: 'Gravpladsens landskab' },
-  { src: withBase('/images/grave.png'), alt: 'Oversigt over grave' },
-];
+export const agm = {
+  title: 'Generalforsamling 2026',
+  when: 'Søndag den 6. september 2026 kl. 14:00–16:00',
+  where: 'Bibliotekvej 68, 1., 2650 Hvidovre',
+};
+
+export function kr(amount: number) {
+  return `${amount.toLocaleString('da-DK')} kr.`;
+}
+
+export function feeForAge(age: number) {
+  const band = feeBands.find((item) => age >= item.min && age <= item.max);
+  return band?.amount ?? feeBands[feeBands.length - 1].amount;
+}

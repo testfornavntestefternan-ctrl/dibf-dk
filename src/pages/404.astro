@@ -1,16 +1,20 @@
 ---
 import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
 import { withBase } from '../data/site';
 ---
 
 <Base title="Siden findes ikke" currentPath="">
   <header class="page-hero">
     <p class="kicker">404</p>
-    <h1 data-i18n="notfound.h1">Vi fandt ikke siden.</h1>
-    <p class="lede" data-i18n="notfound.lede">Gå tilbage til forsiden, eller brug menuen til at finde gravpladsen, vejledning og kontakt.</p>
+    <h1 data-i18n="notfound.h1">Siden findes ikke.</h1>
+    <p class="lede" data-i18n="notfound.lede">Gå tilbage til forsiden, eller brug menuen.</p>
     <div class="cta-row">
-      <a class="btn btn--primary" href={withBase('/')} data-i18n="notfound.home">Til forsiden</a>
-      <a class="btn btn--ghost" href={withBase('/kontakt')} data-i18n="home.ctaContact">Kontakt os</a>
+      <a class="btn btn--primary" href={withBase('/')}>
+        <Icon name="home" size={18} />
+        <span data-i18n="notfound.home">Til forsiden</span>
+      </a>
+      <a class="btn btn--ghost" href={withBase('/kontakt')} data-i18n="nav.contact">Kontakt</a>
     </div>
   </header>
 </Base>

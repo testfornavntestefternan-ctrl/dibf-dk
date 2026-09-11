@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import Ornament from '../components/Ornament.astro';
+import ApplyForm from '../components/ApplyForm.astro';
+---
+
+<Base
+  title="Tilføj børn eller ægtefælle"
+  description="Tilføj børn eller ægtefælle under dit DIBS-medlemskab — Far/mor, email, mobil og husstand."
+  currentPath="/tilfoej"
+>
+  <section class="notice" style="margin-block-end: 1.4rem">
+    <p class="kicker" data-i18n="apply.sampleKicker">Eksempel — intet sendes</p>
+    <p data-i18n="apply.addLead">
+      Far/mor identificerer det eksisterende medlem. Nye personer skrives under Ægtefælle og Børn. Intet sendes til en
+      anden side.
+    </p>
+  </section>
+
+  <header class="page-hero">
+    <p class="kicker" data-i18n="nav.profile">Min profil</p>
+    <h1 data-i18n="apply.addTitle">Tilføjer flere børn eller ægtefæller under dit DIBS medlemskab</h1>
+    <Ornament />
+    <p class="lede" data-i18n="apply.addLede">
+      Far/mor fornavn, efternavn og CPR plus email, mobil og adresse. Derefter de personer, der skal med i husstanden.
+    </p>
+  </header>
+
+  <ApplyForm mode="add" />
+</Base>

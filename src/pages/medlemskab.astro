@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Ornament from '../components/Ornament.astro';
+import FeeTable from '../components/FeeTable.astro';
+import { contact, withBase } from '../data/site';
+---
+
+<Base
+  title="Medlemskab"
+  description="Betingelser for optagelse i DIBS, dækning, rykker og samtykke."
+  currentPath="/medlemskab"
+>
+  <header class="page-hero">
+    <p class="kicker">DIBS</p>
+    <h1 data-i18n="terms.title">Medlemskab og samtykke</h1>
+    <Ornament />
+    <p class="lede" data-i18n="terms.lede">Betingelserne for optagelse, dækning, rykker og personoplysninger.</p>
+    <a class="btn btn--primary" href={withBase('/ansogning')}>
+      <Icon name="family" size={18} />
+      <span data-i18n="join.open">Udfyld ansøgningen</span>
+    </a>
+  </header>
+
+  <div class="stack-lg">
+    <section class="cover-card">
+      <h2>§ 1–4 · Optagelse</h2>
+      <ul>
+        <li>§ 1 At være muslim og bosiddende i Danmark.</li>
+        <li>§ 2 Medlemskab er først gældende efter registrering af betaling af tilmeldingsgebyret, og når ansøger har fået bekræftelse.</li>
+        <li>§ 3 Et medlem er først berettiget til begravelsesstøtte ét år efter godkendelse af medlemskab.</li>
+        <li>§ 4 Nye medlemmer skal erklære, at de familiemedlemmer, som søger medlemskab, ikke lider af en dødelig sygdom, for eksempel kræft.</li>
+      </ul>
+    </section>
+
+    <section class="cover-card">
+      <h2>Hvad dækker medlemskabet</h2>
+      <p>Begravelse af hele kroppen samt kropsdele, for eksempel en amputeret arm.</p>
+      <p>
+        <strong>Fosterbegravelse:</strong> Et foster eller et nyfødt barn betragtes ikke som medlem af DIBS, selv hvis en
+        eller begge forældre er medlemmer. Derfor dækkes udgifterne i forbindelse med dødsfald ikke. Denne beslutning er
+        truffet af DIBS’ bestyrelse i januar 2025.
+      </p>
+      <p>
+        Afgår et medlem ved døden, dækkes kiste og begravelsesomkostninger med højst 30.000 kr. Afgår et medlem ved døden
+        uden for Danmark, dækkes kiste og begravelse ligeledes — dog ikke over den normale pris i Danmark.
+      </p>
+    </section>
+
+    <section class="cover-card">
+      <h2>Rykker, ophør og genindmeldelse</h2>
+      <ol>
+        <li>Opkrævning med 14 dages betalingsfrist.</li>
+        <li>Rykker 1 udsendes 30 dage efter opkrævning med et gebyr på 100 kr. og 14 dages frist.</li>
+        <li>
+          Rykker 2 udsendes 30 dage efter rykker 1 med et gebyr på 200 kr. (ud over rykker 1) og advarsel om udmeldelse.
+        </li>
+      </ol>
+      <p>
+        Betales kontingentet ikke, slettes medlemskabet. Der kan ansøges om genindmeldelse inden for 3 år fra sidst
+        betalte kontingent. Ved genindmeldelse pålægges 100 kr. pr. måned pr. person i husstanden, og hele husstanden
+        skal indmeldes på ny. Efter 3 år kræves ny indmeldelse med fuldt indmeldelsesgebyr. Tidligere indbetalt
+        kontingent tilbagebetales ikke.
+      </p>
+      <p data-i18n="home.minFee">Årligt kontingent er mindst 150 kr. pr. medlem og betales senest 1. februar.</p>
+    </section>
+
+    <section class="cover-card">
+      <h2>Betalingsservice og personoplysninger</h2>
+      <p>Ved indmeldelse gives samtykke til, at DIBS tegner en Betalingsservice-aftale med Nets Danmark.</p>
+      <p>
+        DIBS indsamler og opbevarer CPR-nummer og bankoplysninger for at identificere dig ved indmeldelse, dødsfald og
+        kontingent. CPR, bankkonto, navn, adresse, mobil og e-mail opbevares, så længe du er medlem, og i op til 3 år
+        efter opsigelse. Du kan trække samtykket og kræve sletning skriftligt eller på e-mail. Oplysninger videregives
+        ikke til tredjeparter uden samtykke.
+      </p>
+      <p>
+        Ændringer i husstanden skrives til <a href={`mailto:${contact.emails.medlem}`}>{contact.emails.medlem}</a>.
+      </p>
+    </section>
+
+    <FeeTable />
+  </div>
+</Base>

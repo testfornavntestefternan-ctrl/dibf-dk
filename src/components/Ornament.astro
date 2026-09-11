@@ -1,0 +1,19 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={['ornament', className]} aria-hidden="true">
+  <span class="ornament__line"></span>
+  <svg class="ornament__mark" viewBox="0 0 36 36" width="28" height="28">
+    <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round">
+      <polygon points="18,4 32,18 18,32 4,18"></polygon>
+      <polygon points="8.2,8.2 27.8,8.2 27.8,27.8 8.2,27.8"></polygon>
+      <polygon points="18,9.5 24.1,11.9 26.5,18 24.1,24.1 18,26.5 11.9,24.1 9.5,18 11.9,11.9"></polygon>
+    </g>
+  </svg>
+  <span class="ornament__line"></span>
+</div>

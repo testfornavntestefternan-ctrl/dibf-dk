@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import Ornament from '../components/Ornament.astro';
+import ApplyForm from '../components/ApplyForm.astro';
+---
+
+<Base
+  title="Ansøgning om optagelse"
+  description="Ansøgning om optagelse i DIBS — fornavn, efternavn, CPR, email, mobil og husstand."
+  currentPath="/ansogning"
+>
+  <header class="page-hero">
+    <p class="kicker">DIBS</p>
+    <h1 data-i18n="apply.joinTitle">Ansøgning om optagelse i DIBS.</h1>
+    <Ornament />
+    <p class="lede" data-i18n="apply.joinLede">
+      Udfyld husstanden. Gebyret vises på næste side. Intet sendes — det er kun et udkast af siden.
+    </p>
+  </header>
+
+  <ApplyForm mode="join" />
+</Base>

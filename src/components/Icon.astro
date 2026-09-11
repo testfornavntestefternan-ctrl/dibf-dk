@@ -1,0 +1,140 @@
+---
+type IconName =
+  | 'star8'
+  | 'crescent'
+  | 'mosque'
+  | 'lantern'
+  | 'family'
+  | 'child'
+  | 'shield'
+  | 'clock'
+  | 'book'
+  | 'document'
+  | 'envelope'
+  | 'board'
+  | 'pdf'
+  | 'login'
+  | 'heart'
+  | 'home'
+  | 'coin';
+
+interface Props {
+  name: IconName;
+  size?: number;
+  class?: string;
+}
+
+const { name, size = 24, class: className } = Astro.props;
+
+/** Islamic marks only: crescent, mihrab, mosque, octagon, 8-point khatam. Never a hexagram. */
+const khatam =
+  '12 2.6 13.15 8.05 18.7 6.15 15.95 10.7 21.4 11.85 16.3 14.2 18.7 19.4 13.7 16.9 12 21.4 10.3 16.9 5.3 19.4 7.7 14.2 2.6 11.85 8.05 10.7 5.3 6.15 10.85 8.05';
+
+const icons: Record<IconName, string> = {
+  star8: `<polygon points="${khatam}"/>`,
+  crescent: `
+    <path d="M15.2 4.6A8.3 8.3 0 1 0 15.2 19.4 6.7 6.7 0 1 1 15.2 4.6Z"/>
+  `,
+  mosque: `
+    <path d="M12 3.1 L12 5"/>
+    <path d="M12 3.1 A1 1 0 1 0 12.04 3.1"/>
+    <path d="M7.5 10.4 C7.5 7.5 9.4 5.3 12 5.3 C14.6 5.3 16.5 7.5 16.5 10.4"/>
+    <path d="M4.2 10.5 V20.5 H6.7 V11.8 H4.2Z"/>
+    <path d="M17.3 11.8 V20.5 H19.8 V10.5 H17.3Z"/>
+    <path d="M7.3 10.4 H16.7 V20.5 H7.3Z"/>
+    <path d="M10.3 20.5 V16.6 H13.7 V20.5"/>
+  `,
+  lantern: `
+    <path d="M12 3.2 V5.5"/>
+    <path d="M9.1 5.5 H14.9"/>
+    <path d="M8.1 7.5 H15.9 L17.3 13.5 L12 20.3 L6.7 13.5 Z"/>
+    <path d="M9.4 11.2 H14.6 M10.2 14.2 H13.8"/>
+  `,
+  family: `
+    <circle cx="12" cy="7.4" r="2.4"/>
+    <path d="M7.2 19.2 C7.6 14.8 9.4 13 12 13 C14.6 13 16.4 14.8 16.8 19.2"/>
+    <circle cx="6.2" cy="9.6" r="1.7"/>
+    <path d="M3.6 18.6 C3.9 15.6 5 14.4 6.2 14.4 C7.2 14.4 8 15.2 8.4 16.6"/>
+    <circle cx="17.8" cy="9.6" r="1.7"/>
+    <path d="M15.6 16.6 C16 15.2 16.8 14.4 17.8 14.4 C19 14.4 20.1 15.6 20.4 18.6"/>
+  `,
+  child: `
+    <circle cx="12" cy="8" r="2.3"/>
+    <path d="M7.6 19.4 C8 15.2 9.6 13.4 12 13.4 C14.4 13.4 16 15.2 16.4 19.4"/>
+    <path d="M18.4 7.2 V11.2 M16.4 9.2 H20.4"/>
+  `,
+  shield: `
+    <path d="M12 3.4 L19.2 6.4 V12.6 C19.2 16.8 16.1 20.1 12 21.3 C7.9 20.1 4.8 16.8 4.8 12.6 V6.4 Z"/>
+    <path d="M12 8.2 A4.2 4.2 0 1 0 12.04 8.2"/>
+  `,
+  clock: `
+    <circle cx="12" cy="12" r="8.2"/>
+    <path d="M12 7.2 V12.2 L15.4 14.4"/>
+  `,
+  book: `
+    <path d="M5 5.4 H11.4 C12.4 5.4 12.8 6.2 12.8 7 V19.2 C12.8 18.2 12.2 17.6 11.2 17.6 H5 Z"/>
+    <path d="M19 5.4 H12.6 C11.6 5.4 11.2 6.2 11.2 7 V19.2 C11.2 18.2 11.8 17.6 12.8 17.6 H19 Z"/>
+    <path d="M12 7.2 V17.6"/>
+  `,
+  document: `
+    <path d="M7.2 3.8 H14.2 L18.4 8 V20.2 H7.2 Z"/>
+    <path d="M14.2 3.8 V8 H18.4"/>
+    <path d="M9.6 11.4 H15.8 M9.6 14.2 H15.8 M9.6 17 H13.6"/>
+  `,
+  envelope: `
+    <path d="M4.2 7.2 H19.8 V17.8 H4.2 Z"/>
+    <path d="M4.2 7.2 L12 13.2 L19.8 7.2"/>
+  `,
+  board: `
+    <circle cx="12" cy="6.4" r="2.1"/>
+    <path d="M8.4 13.6 C8.6 10.4 10 9.2 12 9.2 C14 9.2 15.4 10.4 15.6 13.6"/>
+    <circle cx="6.2" cy="14.2" r="1.6"/>
+    <path d="M3.6 20 C3.8 17.6 4.8 16.6 6.2 16.6 C7.6 16.6 8.6 17.6 8.8 20"/>
+    <circle cx="17.8" cy="14.2" r="1.6"/>
+    <path d="M15.2 20 C15.4 17.6 16.4 16.6 17.8 16.6 C19.2 16.6 20.2 17.6 20.4 20"/>
+  `,
+  pdf: `
+    <path d="M7 3.6 H14 L18.6 8.2 V20.4 H7 Z"/>
+    <path d="M14 3.6 V8.2 H18.6"/>
+    <path d="M9.4 12.6 H14.8 M9.4 15.2 H13.2"/>
+  `,
+  login: `
+    <circle cx="12" cy="8" r="3"/>
+    <path d="M6.2 19.2 C6.6 15.4 8.8 13.6 12 13.6 C15.2 13.6 17.4 15.4 17.8 19.2"/>
+  `,
+  heart: `
+    <path d="M12 19.6 C8 16.2 5 13.4 5 10.2 C5 8 6.6 6.4 8.6 6.4 C10 6.4 11.2 7.2 12 8.4 C12.8 7.2 14 6.4 15.4 6.4 C17.4 6.4 19 8 19 10.2 C19 13.4 16 16.2 12 19.6 Z"/>
+  `,
+  home: `
+    <path d="M12 4.2 C8.2 8.2 5.2 10.6 5.2 10.6 V19.4 H18.8 V10.6 C18.8 10.6 15.8 8.2 12 4.2 Z"/>
+    <path d="M10.2 19.4 V14.4 H13.8 V19.4"/>
+  `,
+  coin: `
+    <polygon points="${octagonPoints(12, 12, 8.2)}"/>
+    <path d="M12 8.6 V15.4 M10.2 10.4 H13.4 C14.2 10.4 14.7 11 14.7 11.7 C14.7 12.4 14.2 13 13.4 13 H10.6"/>
+  `,
+};
+
+function octagonPoints(cx: number, cy: number, r: number) {
+  const pts = [];
+  for (let i = 0; i < 8; i++) {
+    const a = Math.PI / 8 + (Math.PI / 4) * i;
+    pts.push(`${(cx + r * Math.cos(a)).toFixed(2)} ${(cy + r * Math.sin(a)).toFixed(2)}`);
+  }
+  return pts.join(' ');
+}
+---
+
+<svg
+  class:list={['icon', className]}
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.45"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  set:html={icons[name]}
+/>

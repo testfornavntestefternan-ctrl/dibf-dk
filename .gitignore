@@ -22,3 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# PDF branding working copies (public/docs holds the live files)
+scripts/pdf-brand/tmp/
+scripts/pdf-brand/originals/
+scripts/pdf-brand/preview/
